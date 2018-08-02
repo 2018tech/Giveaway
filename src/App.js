@@ -3,8 +3,8 @@ import Home from './components/./home.js';
 import Login from './components/./login.js';
 import Register from './components/./register.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import LeftDrawer from './leftdrawer.js';
-import Profile from './profile.js';
+import LeftDrawer from './leftdrawer/./leftdrawer.js';
+import Profile from './leftdrawer/./profile.js';
 
 export default class App extends React.Component {
   /**

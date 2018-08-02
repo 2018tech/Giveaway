@@ -29,12 +29,15 @@ export default class Register extends React.Component {
   };
 
   onRegister(e) {
+    e.preventDefault();
     console.log(this.state.username, this.state.password)
-    fetch('http:localhost:3000/register', {
+
+    fetch('/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'same-origin',
       body: JSON.stringify({
         username: this.state.username,
         password: this.state.password,
@@ -57,6 +60,8 @@ export default class Register extends React.Component {
   render() {
     return (
       <div>
+        <div><button onClick={() => this.props.redirect('Login')}>Login</button></div>
+
         <h2 className="register">Register</h2>
         <div>
           <form>
@@ -70,7 +75,6 @@ export default class Register extends React.Component {
             </div>
             <button type="submit" onClick={e => this.onRegister(e)} className="btn btn-default">Register</button>
           </form>
-          {/* <button onClick={() => this.props.redirect('Login')}>Login</button> */}
         </div>
       </div>
     );

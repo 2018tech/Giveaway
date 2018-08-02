@@ -1,8 +1,3 @@
-/**
-* @file Sets up a login page.
-* @author Jon Lee
-* @author Raj Kane
-**/
 import React from 'react';
 
 

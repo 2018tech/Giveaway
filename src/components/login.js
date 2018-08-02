@@ -29,7 +29,8 @@ export default class Login extends React.Component {
   };
 
   onLogin(e) {
-    fetch('http://localhost:3000/login', {
+    e.preventDefault();
+    fetch('/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -59,6 +60,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <div>
+        <div><button onClick={() => this.props.redirect('Register')}>Register</button></div>
         <h1 className="login">Login</h1>
           <form>
             <div>
