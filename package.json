@@ -1,0 +1,38 @@
+{
+  "name": "myfinalproject",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:1337",
+  "dependencies": {
+    "@material-ui/core": "^1.4.2",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "mapbox-gl": "^0.47.0",
+    "material-ui": "^0.20.1",
+    "mongoose": "^5.2.6",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "react": "^16.4.2",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.4.2",
+    "react-geolocation": "^1.0.4",
+    "react-mapbox-gl": "^3.8.0",
+    "react-navigation": "^2.9.3",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "react": "react-scripts start",
+    "dev": "npm run server | react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
