@@ -13,8 +13,8 @@ var itemSchema = new mongoose.Schema({
   name: String,
   description: String,
   value: Number,
-  location: [Number, Number],
-  time: String,
+  // location: [Number, Number],
+  // time: String,
   user: {type: mongoose.Schema.ObjectId, ref: 'User'},
 });
 

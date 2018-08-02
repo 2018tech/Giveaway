@@ -32,6 +32,14 @@ export default class LeftDrawer extends React.Component {
     this.props.redirect('Home')
   }
 
+  onPostanItem(e){
+    this.props.redirect('PostanItem')
+  }
+
+  onCollection(e){
+    this.props.redirect('Collection')
+  }
+
   render() {
     return (
       <Drawer className="container">
@@ -39,8 +47,8 @@ export default class LeftDrawer extends React.Component {
         <div className="intro"><p>Welcome to Trade!</p></div>
         <div className= "tradingground" onClick={e=> this.onMain(e)}>TradingGround</div>
         <div className= "profile" onClick={e=> this.onProfile(e)}>Profile</div>
-        <div className="postanitem">Post an Item!</div>
-        <div className="collection">Collection</div>
+        <div className="postanitem" onClick={e=>this.onPostanItem(e)}>Post an Item!</div>
+        <div className="collection" onClick={e=>this.onCollection(e)}>Collection</div>
         <div className="tradehistory">Trade History</div>
       </Drawer>
     )}};

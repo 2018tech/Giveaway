@@ -74,9 +74,7 @@ app.post('/postitem', function(req, res){
   new Item({
     name: req.body.name,
     description: req.body.description,
-    value: req.body.value,
-    location: req.body.location,
-    time: req.body.time,
+    value: req.body.value
   })
   .save(function(err, doc) {
     if (err) {
