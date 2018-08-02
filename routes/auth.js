@@ -2,8 +2,9 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models/models');
-var LocalStrategy = require('passport-local');
+// var LocalStrategy = require('passport-local');
 var bodyParser = require('body-parser');
+
 
 
 module.exports = function(passport) {
@@ -11,7 +12,6 @@ module.exports = function(passport) {
 
   router.post('/register', function(req, res) {
     // validation step
-    console.log(req.body)
     var u = new models.User({
       username: req.body.username,
       password: req.body.password,
@@ -52,7 +52,8 @@ module.exports = function(passport) {
       if (!req.user) {
         throw 'error'
       }else{
-        res.send(req.user)
+        models.User.findById(req.user._id)
+        .then(user=>res.send(user))
       }
     })
 

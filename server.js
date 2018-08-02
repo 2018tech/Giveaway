@@ -24,7 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')));
-// app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -76,7 +75,7 @@ app.post('/postitem', function(req, res){
     name: req.body.name,
     description: req.body.description,
     value: req.body.value,
-    location: req.body.location, 
+    location: req.body.location,
     time: req.body.time,
   })
   .save(function(err, doc) {
@@ -88,6 +87,10 @@ app.post('/postitem', function(req, res){
     res.status(200).json({success: true, doc: doc});
   })
 })
+
+
+
+
 //homepage all the items
 // app.get('/home', function(req, res){
 //   Item.find({}, (err, documents) => {

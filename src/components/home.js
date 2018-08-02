@@ -14,7 +14,7 @@ export default class Home extends React.Component {
         longitude: 0,
         latitudeDelta: 0.5,
         longitudeDelta: 0.5
-      }
+      }, showmap: false
     }
   }
 
@@ -28,7 +28,8 @@ export default class Home extends React.Component {
           longitude: success.coords.longitude,
           latitudeDelta: 10,
           longitudeDelta: 10
-        }
+        }, showmap: true
+
       });
     },
     (error) => {
@@ -39,8 +40,7 @@ export default class Home extends React.Component {
 
   render() {
     return(
-      <div className="home">
-        <Map
+      <div className="home"> {this.state.showmap&& <Map
           style={"mapbox://styles/mapbox/streets-v9"}
           containerStyle={{
             height: "100vh",
@@ -56,7 +56,7 @@ export default class Home extends React.Component {
             layout={{ "icon-image": "marker-15" }}>
             {/* <Feature coordinates={[0,0]}/> */}
           </Layer>
-        </Map>
+        </Map>}
       </div>
     )}
   }
