@@ -1,9 +1,3 @@
-/**
-* @file Sets up a navigation bar inking to the other React files.
-* @author Jon Lee
-* @author Raj Kane
-*/
-
 import React from 'react';
 import ReactMapboxGl, { Layer } from "react-mapbox-gl";
 
@@ -32,8 +26,8 @@ export default class Home extends React.Component {
         this.setState({region: {
           latitude: success.coords.latitude,
           longitude: success.coords.longitude,
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05
+          latitudeDelta: 10,
+          longitudeDelta: 10
         }
       });
     },
@@ -51,7 +45,10 @@ export default class Home extends React.Component {
           containerStyle={{
             height: "100vh",
             width: "100vw"
-          }}>
+            }}
+            center={[this.state.region.longitude, this.state.region.latitude]}
+            zoom={[15]}
+            >
           {console.log(this.state)}
           <Layer
             type="symbol"

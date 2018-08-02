@@ -61,10 +61,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
   });
 }
 ));
-//after deserializing our user, we use auth.js file.
-//usually after app.use comes function(), but in this case, that function is auth(passport)
-//whenever we do module.exports=function(passport), that's filename(input)
-//so in this case, it's auth(passport). auth is the file name and passport is the input
+
 app.use(auth(passport))
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
@@ -74,13 +71,12 @@ app.use(function(err, req, res, next) {
   });
 });
 
-//add item to colection with req.user as user
 app.post('/postitem', function(req, res){
   new Item({
     name: req.body.name,
     description: req.body.description,
     value: req.body.value,
-    location: req.body.location, //this won't let me do [req.body.location, req.body.location]
+    location: req.body.location, 
     time: req.body.time,
   })
   .save(function(err, doc) {

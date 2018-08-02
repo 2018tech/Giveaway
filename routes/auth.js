@@ -1,10 +1,4 @@
-/**
- * @file Handles registration and login routes.
- * @author Raj Kane
- * @author Jon Lee
- * @author Henry Gaskin
- * @author Anshul Nanda
- */
+
 var express = require('express');
 var router = express.Router();
 var models = require('../models/models');

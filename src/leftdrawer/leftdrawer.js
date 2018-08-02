@@ -1,9 +1,3 @@
-/**
-* @file Sets up a login page.
-* @author Jon Lee
-* @author Raj Kane
-**/
-
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -12,7 +6,7 @@ export default class LeftDrawer extends React.Component {
 
 
   onLogout(e) {
-    fetch('http://localhost:3000/logout', {
+    fetch('/logout', {
       method: 'GET',
       credentials: 'same-origin',
       headers: {
