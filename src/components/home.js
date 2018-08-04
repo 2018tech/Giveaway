@@ -1,9 +1,27 @@
 import React from 'react';
-import ReactMapboxGl, { Layer } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Feature, GeoJSONLayer, Popup } from "react-mapbox-gl";
+
+
+const geojson = require('.././newgeojson.geojson')
 
 const Map = ReactMapboxGl({
   accessToken: "pk.eyJ1IjoiamxlZWVpIiwiYSI6ImNqa2JmdnBydzBqcXkzb3A4MXR3aGZ5M3IifQ.1BYG_EtmKkW8YTeBYwcL9A"
 });
+
+const symbolLayout: MapboxGL.SymbolLayout = {
+  'text-field': '{place}',
+  'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+  'text-offset': [0.7, 0.6],
+  'text-anchor': 'top'
+};
+const symbolPaint: MapboxGL.SymbolPaint = {
+  'text-color': 'blue'
+};
+
+const circleLayout: MapboxGL.CircleLayout = { visibility: 'visible' };
+const circlePaint: MapboxGL.CirclePaint = {
+  'circle-color': 'red'
+};
 
 export default class Home extends React.Component {
   constructor () {
@@ -14,13 +32,24 @@ export default class Home extends React.Component {
         longitude: 0,
         latitudeDelta: 0.5,
         longitudeDelta: 0.5
-      }, showmap: false
+      },
+      showmap: false,
+      showPopup: false
     }
   }
 
+onClickCircle(e){
+  console.log(e)
+  this.setState({
+    showPopup: !this.state.showPopup,
+    region: {
+      latitude: e.lngLat.lat,
+     longitude: e.lngLat.lng}
+  })
+}
+
+
   componentDidMount() {
-    console.log(this.state)
-    console.log(navigator)
     navigator.geolocation.getCurrentPosition(
       (success) => {
         this.setState({region: {
@@ -36,27 +65,42 @@ export default class Home extends React.Component {
       console.log(error)
     }
   )
-  }
-
-  render() {
-    return(
-      <div className="home"> {this.state.showmap&& <Map
-          style={"mapbox://styles/mapbox/streets-v9"}
-          containerStyle={{
-            height: "100vh",
-            width: "100vw"
-            }}
-            center={[this.state.region.longitude, this.state.region.latitude]}
-            zoom={[15]}
-            >
-          {console.log(this.state)}
-          <Layer
-            type="symbol"
-            id="marker"
-            layout={{ "icon-image": "marker-15" }}>
-            {/* <Feature coordinates={[0,0]}/> */}
-          </Layer>
-        </Map>}
-      </div>
-    )}
-  }
+}
+// mapbox://styles/jleeei/cjke8nygu0h1y2ro8jlf9mj69
+//mapbox://styles/mapbox/streets-v9
+render() {
+  return(
+    <div className="home"> {this.state.showmap&& <Map
+      container='map'
+      style="mapbox://styles/mapbox/streets-v9"
+      containerStyle={{
+        height: "100vh",
+        width: "100vw"
+      }}
+      center={[this.state.region.longitude, this.state.region.latitude]}
+      zoom={[15]}
+      >
+        <GeoJSONLayer
+          data={geojson}
+          circleLayout={circleLayout}
+          circlePaint={circlePaint}
+          symbolLayout={symbolLayout}
+          symbolPaint={symbolPaint}
+          circleOnClick={this.onClickCircle.bind(this)}
+      />
+      {this.state.showPopup ?
+        <Popup
+          coordinates={[this.state.region.longitude, this.state.region.latitude]}
+          className="popup"
+          ><div>You are here</div>
+        </Popup>: null}
+        <Layer
+          type="symbol"
+          id="marker"
+          layout={{ "icon-image": "marker-15" }}>
+          {/* <Feature coordinates={[this.state.region.longitude, this.state.region.latitude]}/> */}
+        </Layer>
+      </Map>}
+    </div>
+  )}
+}

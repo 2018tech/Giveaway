@@ -56,7 +56,7 @@ export default class Register extends React.Component {
       <div>
         <div><button onClick={() => this.props.redirect('Login')}>Login</button></div>
 
-        <h2 className="register">Register</h2>
+        <h2 className="loginregisterh2">Register</h2>
         <div>
           <form>
             <div>

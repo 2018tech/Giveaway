@@ -5,6 +5,7 @@
   "proxy": "http://localhost:1337",
   "dependencies": {
     "@material-ui/core": "^1.4.2",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",

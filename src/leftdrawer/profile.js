@@ -9,7 +9,6 @@ export default class Profile extends React.Component {
     };
   };
 
-
 componentDidMount(){
     fetch('/currentUser', {
       method: 'GET',
@@ -24,9 +23,6 @@ componentDidMount(){
       })
     }).catch(err => console.log(err))
   }
-
-
-
 
   render() {
     return (

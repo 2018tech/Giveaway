@@ -70,21 +70,27 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.post('/postitem', function(req, res){
-  new Item({
+app.post('/postitem', async function(req, res){
+  console.log(req.user)
+  const user = await User.findById(req.user._id)
+  var newitem = new Item({
     name: req.body.name,
     description: req.body.description,
     value: req.body.value
   })
-  .save(function(err, doc) {
-    if (err) {
-      console.log(err);
-      res.status(500).json({err: err.message});
-      return;
-    }
-    res.status(200).json({success: true, doc: doc});
-  })
+  var item = await newitem.save()
+  user.items.push(item)
+  const saveduser = await user.save()
+  res.send(saveduser)
 })
+
+app.get('/collection', async function(req, res){
+  const user = await User.findById(req.user._id).populate("items")
+  var items = user.items
+  res.send(items)
+})
+
+
 
 
 

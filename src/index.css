@@ -4,14 +4,8 @@
   text-align: center;
 }
 
-.login {
-  text-align: left;
-  display: flex;
-  color: black;
-}
-
-.register {
-  text-align: left;
+.loginregisterh2 {
+  text-align: center;
   display: flex;
   color: black;
 }
@@ -86,4 +80,11 @@
   font-family: garamond;
   font-size: 25px;
   background-color: white;
+}
+
+.popup{
+  color: black;
+  width: 150;
+  height: 150;
+  borderRadius: 120;
 }

@@ -6,7 +6,7 @@ var userSchema = new mongoose.Schema({
   {type: String,
   unique: true},
   password: String,
-  items: []
+  items: [{type: mongoose.Schema.ObjectId, ref: 'Item'}]
 });
 
 var itemSchema = new mongoose.Schema({
@@ -15,7 +15,6 @@ var itemSchema = new mongoose.Schema({
   value: Number,
   // location: [Number, Number],
   // time: String,
-  user: {type: mongoose.Schema.ObjectId, ref: 'User'},
 });
 
 var tradeSchema = new mongoose.Schema({
