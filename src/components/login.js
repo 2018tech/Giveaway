@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import Button from 'react-semantic-ui';
 
 export default class Login extends React.Component {
   constructor (props) {
@@ -54,21 +54,24 @@ export default class Login extends React.Component {
   render() {
     return (
       <div>
-        <div><button onClick={() => this.props.redirect('Register')}>Register</button></div>
-        <h1 className="loginregister2">Login</h1>
-          <form>
-            <div>
-              <label>ID</label>
-              <input type="email" onChange={e => this.onUsernameChange(e)} className="form-control" placeholder='email address'></input>
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input type="password" onChange={e => this.onPasswordChange(e)} className="form-control" placeholder='password'></input>
-            </div>
+        <div><button onClick={() => this.props.redirect('Register')}>Register</button>
+        <button onClick={() => this.props.redirect('About')}>About</button>
+      </div>
+        <h1 className="loginregister">Login</h1>
+        <form>
+          <div className="loginregister">
+            <label>ID</label>
+            <input type="email" onChange={e => this.onUsernameChange(e)} className="form-control" placeholder='email address'></input>
+          </div>
+          <div className="loginregister">
+            <label>Password</label>
+            <input type="password" onChange={e => this.onPasswordChange(e)} className="form-control" placeholder='password'></input>
+          </div>
+          <div className="loginregister">
             <button type="submit" onClick={e => this.onLogin(e)} className="btn btn-default">Login</button>
-          </form>
-          {/* <button onClick={() => this.props.redirect('Register')}>Register</button> */}
-        </div>
+          </div>
+        </form>
+      </div>
     );
   }
 }

@@ -6,6 +6,11 @@ var userSchema = new mongoose.Schema({
   {type: String,
   unique: true},
   password: String,
+  yourshopname: String,
+  street: String,
+  city: String,
+  state: String,
+  zipcode: Number,  
   items: [{type: mongoose.Schema.ObjectId, ref: 'Item'}]
 });
 

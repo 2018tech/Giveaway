@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapboxGl, { Layer, Feature, GeoJSONLayer, Popup } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, GeoJSONLayer, Popup } from "react-mapbox-gl";
 
 
 const geojson = require('.././newgeojson.geojson')

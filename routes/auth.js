@@ -13,6 +13,11 @@ module.exports = function(passport) {
     var u = new models.User({
       username: req.body.username,
       password: req.body.password,
+      yourshopname: req.body.yourshopname,
+      street: req.body.street,
+      city: req.body.city,
+      state: req.body.state,
+      zipcode: req.body.zipcode
     });
     u.save(function(err, user) {
       if (err) {

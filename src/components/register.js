@@ -6,7 +6,13 @@ export default class Register extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      passwordconfirm: '',
+      yourshopname: '',
+      street: '',
+      city: '',
+      state: '',
+      zipcode: 0
     };
   };
 
@@ -22,10 +28,57 @@ export default class Register extends React.Component {
     });
   };
 
+  onPasswordConfirm(e) {
+    this.setState({
+      passwordconfirm: e.target.value
+    });
+  };
+
+  onyourshopnameChange(e) {
+    this.setState({
+      yourshopname: e.target.value
+    });
+  };
+
+  onstreetChange(e) {
+    this.setState({
+      street: e.target.value
+    });
+  };
+
+  oncityChange(e) {
+    this.setState({
+      city: e.target.value
+    });
+  };
+
+  onstateChange(e) {
+    this.setState({
+      state: e.target.value
+    });
+  };
+
+  onzipcodeChange(e) {
+    this.setState({
+      zipcode: e.target.value
+    });
+  };
+
+
   onRegister(e) {
     e.preventDefault();
-    console.log(this.state.username, this.state.password)
-
+    if (this.state.zipcode.length !== 5){
+      alert('Invalid Zipcode!')
+    }
+    else if(this.state.password !== this.state.passwordconfirm){
+      alert('Passwords did not match')
+    }else if(this.state.state.length !== 2){
+      alert('Invalid State')
+    }
+    else if(this.state.password.length <= 5){
+      alert("Your password is too short")
+    }
+    else
     fetch('/register', {
       method: 'POST',
       headers: {
@@ -35,6 +88,11 @@ export default class Register extends React.Component {
       body: JSON.stringify({
         username: this.state.username,
         password: this.state.password,
+        yourshopname: this.state.yourshopname,
+        street: this.state.street,
+        city: this.state.city,
+        state: this.state.state,
+        zipcode: this.state.zipcode
       })
     })
     .then(res => {
@@ -53,24 +111,48 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <div>
-        <div><button onClick={() => this.props.redirect('Login')}>Login</button></div>
-
-        <h2 className="loginregisterh2">Register</h2>
+      <div><button onClick={() => this.props.redirect('Login')}>Login</button>
+      <div className="loginregister">
+        <h2 >Register</h2>
         <div>
           <form>
             <div>
-              <label>ID</label>
-              <input type="email" onChange={e => this.onUsernameChange(e)} placeholder='username'></input>
+              <label>ID: </label>
+              <input type="email" onChange={e => this.onUsernameChange(e)} placeholder='Username'></input>
             </div>
             <div>
-              <label>Password</label>
-              <input type="password" onChange={e => this.onPasswordChange(e)} placeholder='password'></input>
+              <label>Password: </label>
+              <input type="password" onChange={e => this.onPasswordChange(e)} placeholder='Password'></input>
+            </div>
+            <div>
+              <label>Password Confirmation: </label>
+              <input type="passwordconfirm" onChange={e => this.onPasswordConfirm(e)} placeholder='Password Confirmation'></input>
+            </div>
+            <div>
+              <label>Your Shop Name: </label>
+              <input type="yourshopname" onChange={e => this.onyourshopnameChange(e)} placeholder='Your Shop'></input>
+            </div>
+            <div>
+              <label>Street: </label>
+              <input type="street" onChange={e => this.onstreetChange(e)} placeholder='Street'></input>
+            </div>
+            <div>
+              <label>City: </label>
+              <input type="city" onChange={e => this.oncityChange(e)} placeholder='City'></input>
+            </div>
+            <div>
+              <label>State: </label>
+              <input type="state" onChange={e => this.onstateChange(e)} placeholder='State'></input>
+            </div>
+            <div>
+              <label>Zipcode: </label>
+              <input type="zipcode" onChange={e => this.onzipcodeChange(e)} placeholder='Zipcode'></input>
             </div>
             <button type="submit" onClick={e => this.onRegister(e)} className="btn btn-default">Register</button>
           </form>
         </div>
       </div>
+    </div>
     );
   }
 }

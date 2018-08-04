@@ -4,9 +4,8 @@
   text-align: center;
 }
 
-.loginregisterh2 {
+.loginregister {
   text-align: center;
-  display: flex;
   color: black;
 }
 
@@ -26,6 +25,7 @@
   width:auto;
   margin:0;
   padding:22px;
+
 }
 .profile{
   background-color: lightblue;

@@ -7,11 +7,10 @@ import LeftDrawer from './leftdrawer/./leftdrawer.js';
 import Profile from './leftdrawer/./profile.js';
 import PostanItem from './leftdrawer/./postanitem.js';
 import Collection from './leftdrawer/./collection.js';
+import About from './components/./about.js';
 
 export default class App extends React.Component {
-  /**
-  * @class Represents the desktop application.
-  */
+
   constructor(props) {
     super(props);
     this.state = {
@@ -48,6 +47,8 @@ export default class App extends React.Component {
               {this.state.currentPage === 'Profile' ? <Profile redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'PostanItem' ? <PostanItem redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Collection' ? <Collection redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
+              {this.state.currentPage === 'About' ? <About redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
+
             </div>
           </MuiThemeProvider>
         </div>
