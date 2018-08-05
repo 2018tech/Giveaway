@@ -1,3 +1,14 @@
+body{
+  background-color: 		#E0FFFF;
+}
+
+ .navbar-default .navbar-nav > li > a {
+      color: black;
+      font-weight: 400;
+      font-style: Helvetica;
+      font-size: 20px;
+    }
+
 .home {
   background-color: blue;
   color: white;
@@ -89,16 +100,20 @@
   borderRadius: 120;
 }
 
-/* .button{
-border: none;
-color: white;
-padding: 20px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 16px;
-margin: 4px 2px;
-cursor: pointer;
-border-radius: 12px;
- background-color: #F5F5F5;
-} */
+.frontpage{
+  text-align: center;
+  font-size: 55px;
+  font-family: verdana;
+}
+
+.ourteam{
+  text-align: center;
+  font-size: 55px;
+  font-family: verdana;
+}
+
+.aboutpage{
+  text-align: left;
+  font-size: 45px;
+  font-family: verdana;
+}

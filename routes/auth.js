@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models/models');
 var bodyParser = require('body-parser');
-
+var passport = require('passport');
 
 
 module.exports = function(passport) {
@@ -47,6 +47,20 @@ module.exports = function(passport) {
     req.logout();
     res.json({sucess: true});
   });
+
+// //auth with google
+//   router.get('/google', passport.authenticate('google', {
+//     scope: ['profile']
+//   }));
+//
+// //callback route for google to redirect to
+// router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+//   res.send(req.user);
+// })
+//
+// router.get('/', (req, res)=> {
+//   res.send('you are loggedin, this is your profile' + req.user.username)
+// })
 
   return router;
 };

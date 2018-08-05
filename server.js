@@ -2,12 +2,15 @@ const express = require('express');
 const path = require('path');
 var logger = require('morgan');
 
+
 var cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+// var cookieSession = require('cookie-session');
 var session = require('express-session');
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
@@ -19,6 +22,10 @@ var Item = require('./models/models').Item;
 
 const app = express();
 
+// app.use(cookieSession({
+//   maxAge: 24*60*60*1000,
+//   keys: ['alksdjf']
+// }))
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -36,7 +43,31 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-// passport strategy
+
+// passport.use(new GoogleStrategy({
+//     consumerKey: "376035163671-4fleku28ndgb63ia6hlmoh2pn49q8co8.apps.googleusercontent.com",
+//     consumerSecret: "cSWtxieoM6Zt6hKgHOTcAqfW",
+//     callbackURL: "/auth/google/redirect"
+//   },
+//   (token, tokenSecret, profile, done)=> {
+//   User.findOne({googleId: profile.id}).then((currentUser)=>{
+//     if(currentUser){
+//       console.log('user is:' currentUser)
+//       done(null, currentUser);
+//     }else{
+//       new User({
+//         username: profile.displayName,
+//         googleId: profile.id
+//       }).save().then((newUser)=>{
+//         console.log('new user created' + newUser);
+//         done(null,newUser);
+//       });
+//     }
+//   })
+// }))
+
+
+// passport localstrategy
 passport.use(new LocalStrategy(function(username, password, done) {
   // Find the user with the given username
   console.log('hi');
@@ -60,6 +91,11 @@ passport.use(new LocalStrategy(function(username, password, done) {
   });
 }
 ));
+
+
+
+
+
 
 app.use(auth(passport))
 app.use(function(err, req, res, next) {
@@ -89,6 +125,7 @@ app.get('/collection', async function(req, res){
   var items = user.items
   res.send(items)
 })
+
 
 
 

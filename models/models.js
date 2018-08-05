@@ -5,12 +5,13 @@ var userSchema = new mongoose.Schema({
   username:
   {type: String,
   unique: true},
+  // googleId: String
   password: String,
   yourshopname: String,
   street: String,
   city: String,
   state: String,
-  zipcode: Number,  
+  zipcode: Number,
   items: [{type: mongoose.Schema.ObjectId, ref: 'Item'}]
 });
 
