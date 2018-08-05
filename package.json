@@ -22,8 +22,7 @@
     "react-geolocation": "^1.0.4",
     "react-mapbox-gl": "^3.8.0",
     "react-navigation": "^2.9.3",
-    "react-scripts": "1.1.4",
-    "react-semantic-ui": "^0.2.0"
+    "react-scripts": "1.1.4"
   },
   "scripts": {
     "start": "node server.js",

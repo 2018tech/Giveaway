@@ -1,5 +1,6 @@
 import React from 'react';
-// import Button from 'react-semantic-ui';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
+
 
 export default class Login extends React.Component {
   constructor (props) {
@@ -41,7 +42,7 @@ export default class Login extends React.Component {
         console.log(res);
         console.log('User validated: ', this.state.username);
         this.props.setLogin(true)
-        this.props.app.setState({currentPage: "Home"})
+        this.props.app.setState({currentPage: "Mainpage"})
         break;
         default:
         console.log(res.status);
@@ -49,23 +50,44 @@ export default class Login extends React.Component {
     })
     .catch(err => console.log('Error ', err));
   }
-
+  // <Button onClick={()=> this.props.redirect('Register')}>Register</Button>
+  // <Button onClick={()=> this.props.redirect('About')}>About</Button>
 
   render() {
     return (
       <div>
-        <div><button onClick={() => this.props.redirect('Register')}>Register</button>
-        <button onClick={() => this.props.redirect('About')}>About</button>
-      </div>
+
+        <Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a>Win-Win</a>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Nav activeKey={1} pullRight bsstyle="pills">
+            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
+              HOME
+            </NavItem>
+            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
+              ABOUT
+            </NavItem>
+            <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
+              REGISTER
+            </NavItem>
+            <NavItem eventKey={2} onSelect={()=>this.props.redirect('Login')}>
+              LOGIN
+            </NavItem>
+          </Nav>
+        </Navbar>
+
         <h1 className="loginregister">Login</h1>
         <form>
           <div className="loginregister">
-            <label>ID</label>
-            <input type="email" onChange={e => this.onUsernameChange(e)} className="form-control" placeholder='email address'></input>
+            <label>ID:    </label>
+            <input type="email" onChange={e => this.onUsernameChange(e)} className="form-control" placeholder='ID'></input>
           </div>
           <div className="loginregister">
             <label>Password</label>
-            <input type="password" onChange={e => this.onPasswordChange(e)} className="form-control" placeholder='password'></input>
+            <input type="password" onChange={e => this.onPasswordChange(e)} className="form-control" placeholder='Password'></input>
           </div>
           <div className="loginregister">
             <button type="submit" onClick={e => this.onLogin(e)} className="btn btn-default">Login</button>

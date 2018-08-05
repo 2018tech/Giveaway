@@ -28,7 +28,7 @@ export default class LeftDrawer extends React.Component {
   }
 
   onMain(e) {
-    this.props.redirect('Home')
+    this.props.redirect('Mainpage')
   }
 
   onPostanItem(e){
@@ -38,12 +38,12 @@ export default class LeftDrawer extends React.Component {
   onCollection(e){
     this.props.redirect('Collection')
   }
-
+  
 
 
   render() {
     return (
-      <Drawer className="container">
+      <Drawer>
         <RaisedButton style={{display: 'flex', alignItems: 'center'}} label='Logout' onMouseDown={e => this.onLogout(e)} primary={true} />
         <div className="intro"><p>Win-Win</p></div>
         <div className= "tradingground" onClick={e=> this.onMain(e)}>Map Home</div>

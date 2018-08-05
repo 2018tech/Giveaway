@@ -18,9 +18,9 @@ export default class Collection extends React.Component {
       return this.state.items.map((item, i)=> {
         return (
           <div>
-          <p key={i}>Item Name: {item.name}</p>
-          <p key={i}>Item Description: {item.description}</p>
-          <p key={i}>Item Value: {item.value}</p>
+          <p key={0}>Item Name: {item.name}</p>
+          <p key={1}>Item Description: {item.description}</p>
+          <p key={2}>Item Value: {item.value}</p>
         </div>
         )
       })

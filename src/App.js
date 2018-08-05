@@ -1,20 +1,21 @@
 import React from 'react';
-import Home from './components/./home.js';
-import Login from './components/./login.js';
-import Register from './components/./register.js';
+import Mainpage from './notloggedin/./main.js';
+import Login from './notloggedin/./login.js';
+import Register from './notloggedin/./register.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import LeftDrawer from './leftdrawer/./leftdrawer.js';
-import Profile from './leftdrawer/./profile.js';
-import PostanItem from './leftdrawer/./postanitem.js';
-import Collection from './leftdrawer/./collection.js';
-import About from './components/./about.js';
+import LeftDrawer from './postloggedin/./leftdrawer.js';
+import Profile from './postloggedin/./profile.js';
+import PostanItem from './postloggedin/./postanitem.js';
+import Collection from './postloggedin/./collection.js';
+import About from './notloggedin/./about.js';
+import Firstpage from './notloggedin/./firstpage.js';
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: "Login",
+      currentPage: "Firstpage",
       loggedIn: false
     };
     this.setLogin = this.setLogin.bind(this)
@@ -43,11 +44,12 @@ export default class App extends React.Component {
               </div>
               {this.state.currentPage === 'Register' ? <Register redirect={this.redirect} app={this}/> : null}
               {this.state.currentPage === 'Login' ? <Login redirect={this.redirect} app={this} setLogin={this.setLogin} /> : null}
-              {this.state.currentPage === 'Home' ? <Home redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
+              {this.state.currentPage === 'Mainpage' ? <Mainpage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Profile' ? <Profile redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'PostanItem' ? <PostanItem redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Collection' ? <Collection redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'About' ? <About redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
+              {this.state.currentPage === 'Firstpage' ? <Firstpage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
 
             </div>
           </MuiThemeProvider>

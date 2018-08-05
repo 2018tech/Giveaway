@@ -1,16 +1,34 @@
 import React from 'react';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
-export default class Collection extends React.Component {
-  constructor(props) {
-    super(props);
-  };
 
+export default class About extends React.Component {
 
   render() {
     return (
       <div>
-        <div><button onClick={() => this.props.redirect('Register')}>Register</button>
-          <button onClick={() => this.props.redirect('Login')}>Login</button></div>
+
+        <Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a>Win-Win</a>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Nav activeKey={1} pullRight bsstyle="pills">
+            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
+              HOME
+            </NavItem>
+            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
+              ABOUT
+            </NavItem>
+            <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
+              REGISTER
+            </NavItem>
+            <NavItem  eventKey={2} onSelect={()=>this.props.redirect('Login')}>
+              LOGIN
+            </NavItem>
+          </Nav>
+        </Navbar>
 
       <div className="aboutpage">
           <div className="aboutpagetitles">Story</div>

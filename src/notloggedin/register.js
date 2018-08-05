@@ -1,4 +1,5 @@
 import React from 'react';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
 
 export default class Register extends React.Component {
@@ -111,7 +112,30 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <div><button onClick={() => this.props.redirect('Login')}>Login</button>
+      <div>
+
+        <Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a>Win-Win</a>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Nav activeKey={1} pullRight bsstyle="pills">
+            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
+              HOME
+            </NavItem>
+            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
+              ABOUT
+            </NavItem>
+            <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
+              REGISTER
+            </NavItem>
+            <NavItem eventKey={4} onSelect={()=>this.props.redirect('Login')}>
+              LOGIN
+            </NavItem>
+          </Nav>
+        </Navbar>
+
       <div className="loginregister">
         <h2 >Register</h2>
         <div>

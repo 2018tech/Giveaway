@@ -23,7 +23,7 @@ const circlePaint: MapboxGL.CirclePaint = {
   'circle-color': 'red'
 };
 
-export default class Home extends React.Component {
+export default class Mainpage extends React.Component {
   constructor () {
     super()
     this.state = {
