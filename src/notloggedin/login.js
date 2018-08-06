@@ -1,7 +1,6 @@
 import React from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
-
 export default class Login extends React.Component {
   constructor (props) {
     super(props);
@@ -52,6 +51,10 @@ export default class Login extends React.Component {
   }
   // <Button onClick={()=> this.props.redirect('Register')}>Register</Button>
   // <Button onClick={()=> this.props.redirect('About')}>About</Button>
+
+
+
+
 
   render() {
     return (

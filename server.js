@@ -15,11 +15,16 @@ mongoose.connect(process.env.MONGODB_URI);
 
 var auth = require("./routes/auth");
 
+
+
 var User = require('./models/models').User;
 var Item = require('./models/models').Item;
 var Location = require('./models/models').Location;
 
 const app = express();
+
+
+
 
 
 app.use(logger('dev'));
@@ -93,9 +98,6 @@ app.get('/collection', async function(req, res){
   var items = user.items
   res.send(items)
 })
-
-
-
 
 
 

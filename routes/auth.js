@@ -4,7 +4,12 @@ var router = express.Router();
 var models = require('../models/models');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var NodeGeocoder = require('node-geocoder');
 
+var options = {
+  provider: 'google'
+};
+var geocoder = NodeGeocoder(options);
 
 module.exports = function(passport) {
 
@@ -15,11 +20,6 @@ module.exports = function(passport) {
       password: req.body.password,
       firstname: req.body.firstname,
       lastname: req.body.lastname
-      // yourshopname: req.body.yourshopname,
-      // street: req.body.street,
-      // city: req.body.city,
-      // state: req.body.state,
-      // zipcode: req.body.zipcode
     });
     u.save(function(err, user) {
       if (err) {
@@ -32,8 +32,7 @@ module.exports = function(passport) {
     });
   });
 
-  router.post('/location', function(req, res) {
-
+  router.post('/location', async function(req, res) {
     var u = new models.User({
       yourshopname: req.body.yourshopname,
       street: req.body.street,
@@ -41,17 +40,35 @@ module.exports = function(passport) {
       state: req.body.state,
       zipcode: req.body.zipcode
     });
+    var geoconvert;
+     await geocoder.geocode(`${req.body.street} ${req.body.city} ${req.body.state} ${req.body.zipcode}`,
+      function(err, res) {
+        geoconvert = {
+            "type": "Feature",
+            "properties": {
+              "place": "Your Shop",
+              "login": "",
+              "lat": `${res[0].latitude}`,
+              "lon": `${res[0].longitude}`
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                res[0].longitude,
+                res[0].latitude
+              ]
+            }
+          }}
+        )
     u.save(function(err, user) {
       if (err) {
         console.log(err);
         res.status(500).json({err: err.message});
         return;
       }
-      console.log(user);
-      res.status(200).json({success: true});
+      res.status(200).json({location: geoconvert});
     });
   });
-
 
 
   router.post('/login', passport.authenticate('local'), (req, res) => {

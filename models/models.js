@@ -22,13 +22,13 @@ var itemSchema = new mongoose.Schema({
   // time: String,
 });
 
-var locationSchema = new mongoose.Schema({
-  yourshopname: String,
-  street: String,
-  city: String,
-  state: String,
-  zipcode: Number
-});
+// var locationSchema = new mongoose.Schema({
+//   yourshopname: String,
+//   street: String,
+//   city: String,
+//   state: String,
+//   zipcode: Number
+// });
 
 
 // var tradeSchema = new mongoose.Schema({
@@ -42,6 +42,6 @@ var locationSchema = new mongoose.Schema({
 module.exports = {
   User: mongoose.model('User', userSchema),
   Item: mongoose.model('Item', itemSchema),
-  Location: mongoose.model('Location', locationSchema),
+  // Location: mongoose.model('Location', locationSchema),
   // Trade: mongoose.model('Trade', tradeSchema)
 };
