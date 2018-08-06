@@ -6,16 +6,26 @@ export default class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstname: '',
+      lastname: '',
       username: '',
       password: '',
-      passwordconfirm: '',
-      yourshopname: '',
-      street: '',
-      city: '',
-      state: '',
-      zipcode: 0
+      passwordconfirm: ''
     };
   };
+
+  onFnameChange(e) {
+    this.setState({
+      firstname: e.target.value
+    });
+  };
+
+  onLnameChange(e) {
+    this.setState({
+      lastname: e.target.value
+    });
+  };
+
 
   onUsernameChange(e) {
     this.setState({
@@ -35,51 +45,20 @@ export default class Register extends React.Component {
     });
   };
 
-  onyourshopnameChange(e) {
-    this.setState({
-      yourshopname: e.target.value
-    });
-  };
 
-  onstreetChange(e) {
-    this.setState({
-      street: e.target.value
-    });
-  };
-
-  oncityChange(e) {
-    this.setState({
-      city: e.target.value
-    });
-  };
-
-  onstateChange(e) {
-    this.setState({
-      state: e.target.value
-    });
-  };
-
-  onzipcodeChange(e) {
-    this.setState({
-      zipcode: e.target.value
-    });
-  };
 
 
   onRegister(e) {
     e.preventDefault();
-    if (this.state.zipcode.length !== 5){
-      alert('Invalid Zipcode!')
-    }
-    else if(this.state.password !== this.state.passwordconfirm){
+    if (this.state.firstname === ''){
+      alert("Forgot to put your firstname!")
+    }else if(this.state.lastname ===''){
+      alert("Forgot to put your lastname!")
+    }  else if(this.state.password.length <= 5){
+      alert("Your password needs to be at least 6 characters")
+    }else if(this.state.password !== this.state.passwordconfirm){
       alert('Passwords did not match')
-    }else if(this.state.state.length !== 2){
-      alert('Invalid State')
-    }
-    else if(this.state.password.length <= 5){
-      alert("Your password is too short")
-    }
-    else
+    }else
     fetch('/register', {
       method: 'POST',
       headers: {
@@ -87,13 +66,16 @@ export default class Register extends React.Component {
       },
       credentials: 'same-origin',
       body: JSON.stringify({
+        firstname: this.state.firstname,
+        lastname: this.state.lastname,
         username: this.state.username,
         password: this.state.password,
-        yourshopname: this.state.yourshopname,
-        street: this.state.street,
-        city: this.state.city,
-        state: this.state.state,
-        zipcode: this.state.zipcode
+        passwordconfirm: this.state.passwordconfirm
+        // yourshopname: this.state.yourshopname,
+        // street: this.state.street,
+        // city: this.state.city,
+        // state: this.state.state,
+        // zipcode: this.state.zipcode
       })
     })
     .then(res => {
@@ -113,20 +95,21 @@ export default class Register extends React.Component {
   render() {
     return (
       <div>
-        <Navbar>
-          <Nav activeKey={1} pullLeft bsstyle="pills">
+        <div>
+          <Navbar>
+            <Nav activeKey={1} pullLeft bsstyle="pills">
               <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
                 Win-Win
               </NavItem>
             </Nav>
 
-        <Nav activeKey={1} pullRight bsstyle="pills">
-            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
-              Home
-            </NavItem>
-            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
+            <Nav activeKey={1} pullRight bsstyle="pills">
+              <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
+                Home
+              </NavItem>
+              {/* <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
               About
-            </NavItem>
+            </NavItem> */}
             <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
               Register
             </NavItem>
@@ -135,48 +118,38 @@ export default class Register extends React.Component {
             </NavItem>
           </Nav>
         </Navbar>
-
-      <div className="loginregister">
-        <h2 >Register</h2>
-        <div>
-          <form>
-            <div>
-              <label>ID: </label>
-              <input type="email" onChange={e => this.onUsernameChange(e)} placeholder='Username'></input>
-            </div>
-            <div>
-              <label>Password: </label>
-              <input type="password" onChange={e => this.onPasswordChange(e)} placeholder='Password'></input>
-            </div>
-            <div>
-              <label>Password Confirmation: </label>
-              <input type="passwordconfirm" onChange={e => this.onPasswordConfirm(e)} placeholder='Password Confirmation'></input>
-            </div>
-            <div>
-              <label>Your Shop Name: </label>
-              <input type="yourshopname" onChange={e => this.onyourshopnameChange(e)} placeholder='Your Shop'></input>
-            </div>
-            <div>
-              <label>Street: </label>
-              <input type="street" onChange={e => this.onstreetChange(e)} placeholder='Street'></input>
-            </div>
-            <div>
-              <label>City: </label>
-              <input type="city" onChange={e => this.oncityChange(e)} placeholder='City'></input>
-            </div>
-            <div>
-              <label>State: </label>
-              <input type="state" onChange={e => this.onstateChange(e)} placeholder='State'></input>
-            </div>
-            <div>
-              <label>Zipcode: </label>
-              <input type="zipcode" onChange={e => this.onzipcodeChange(e)} placeholder='Zipcode'></input>
-            </div>
-            <button type="submit" onClick={e => this.onRegister(e)} className="btn btn-default">Register</button>
-          </form>
+      </div>
+      <div className="container">
+        <div className="row">
+          <h2 >Register</h2>
+          <div>
+            <form>
+              <div className="col-25">
+                <label>First name: </label><br></br>
+                <input type="firstname" onChange={e => this.onFnameChange(e)}></input>
+              </div>
+              <div className="col-25">
+                <label>Last name: </label><br></br>
+                <input type="lastname" onChange={e => this.onLnameChange(e)}></input>
+              </div>
+              <div className="col-25">
+                <label>Email: </label><br></br>
+                <input type="email" onChange={e => this.onUsernameChange(e)}></input>
+              </div>
+              <div className="col-75">
+                <label>Password: </label><br></br>
+                <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
+              </div>
+              <div>
+                <label>Re-enter password: </label><br></br>
+                <input type="password" onChange={e => this.onPasswordConfirm(e)}></input>
+              </div><br></br>
+              <button type="submit" onClick={e => this.onRegister(e)} className="btn btn-default">Register</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-    );
-  }
+  );
+}
 }

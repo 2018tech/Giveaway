@@ -1,13 +1,13 @@
 body{
-  background-color: 		#E0FFFF;
+  background-color:#E0FFFF;
 }
 
- .navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav > li > a {
       color: black;
       font-weight: 400;
       font-style: Helvetica;
       font-size: 20px;
-    }
+}
 
 .home {
   background-color: blue;
@@ -22,15 +22,15 @@ body{
 
 .intro{
   text-align: center;
-  font-family: garamond;
+  font-family: Helvetica;
   font-size: 32px;
   padding:10px;
 }
 
 .tradingground{
-  background-color: lightblue;
+  background-color: #E0FFFF;
   text-align: center;
-  font-family: garamond;
+  font-family: Helvetica;
   font-size: 30px;
   height:auto;
   width:auto;
@@ -39,9 +39,9 @@ body{
 
 }
 .profile{
-  background-color: lightblue;
+  background-color: #E0FFFF;
   text-align: center;
-  font-family: garamond;
+  font-family: Helvetica;
   font-size: 30px;
   height:auto;
   width:auto;
@@ -49,9 +49,9 @@ body{
   padding:22px;
 }
 .postanitem{
-  background-color: lightblue;
+  background-color: #E0FFFF;
   text-align: center;
-  font-family: garamond;
+  font-family: Helvetica;
   font-size: 30px;
   height:auto;
   width:auto;
@@ -59,9 +59,9 @@ body{
   padding:22px;
 }
 .collection{
-  background-color: lightblue;
+  background-color: #E0FFFF;
   text-align: center;
-  font-family: garamond;
+  font-family: Helvetica;
   font-size: 30px;
   height:auto;
   width:auto;
@@ -69,9 +69,9 @@ body{
   padding:22px;
 }
 .tradehistory{
-  background-color: lightblue;
+  background-color: #E0FFFF;
   text-align: center;
-  font-family: garamond;
+  font-family: Helvetica;
   font-size: 30px;
   height:auto;
   width:auto;
@@ -81,14 +81,14 @@ body{
 
 .profilepage{
   text-align: center;
-  font-family: garamond;
+  font-family: Helvetica;
   font-size: 32px;
   background-color: white;
 }
 
 .postanitempage{
   text-align: center;
-  font-family: garamond;
+  font-family: Helvetica;
   font-size: 25px;
   background-color: white;
 }
@@ -103,17 +103,32 @@ body{
 .frontpage{
   text-align: center;
   font-size: 55px;
-  font-family: verdana;
+  font-family: Helvetica;
 }
 
 .ourteam{
   text-align: center;
   font-size: 55px;
-  font-family: verdana;
+  font-family: Helvetica;
 }
 
 .aboutpage{
   text-align: left;
   font-size: 45px;
-  font-family: verdana;
+  font-family: Helvetica;
+}
+
+.col-25 {
+    float: none;
+    width: 75%;
+    margin-top: 6px;
+    align-content: center;
+}
+
+.col-75 {
+    float: none;
+    width: 75%;
+    margin-top: 6px;
+    align-content: center;
+    justify-content: center;
 }

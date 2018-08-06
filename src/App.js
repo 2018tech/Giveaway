@@ -1,5 +1,5 @@
 import React from 'react';
-import Mainpage from './notloggedin/./main.js';
+import Mainpage from './postloggedin/./main.js';
 import Login from './notloggedin/./login.js';
 import Register from './notloggedin/./register.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -7,7 +7,6 @@ import LeftDrawer from './postloggedin/./leftdrawer.js';
 import Profile from './postloggedin/./profile.js';
 import PostanItem from './postloggedin/./postanitem.js';
 import Collection from './postloggedin/./collection.js';
-import About from './notloggedin/./about.js';
 import Firstpage from './notloggedin/./firstpage.js';
 
 export default class App extends React.Component {
@@ -48,7 +47,7 @@ export default class App extends React.Component {
               {this.state.currentPage === 'Profile' ? <Profile redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'PostanItem' ? <PostanItem redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Collection' ? <Collection redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
-              {this.state.currentPage === 'About' ? <About redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
+              {/* {this.state.currentPage === 'About' ? <About redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null} */}
               {this.state.currentPage === 'Firstpage' ? <Firstpage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
 
             </div>

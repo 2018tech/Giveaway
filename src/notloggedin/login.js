@@ -58,42 +58,41 @@ export default class Login extends React.Component {
       <div>
         <Navbar>
           <Nav activeKey={1} pullLeft bsstyle="pills">
-              <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
-                Win-Win
-              </NavItem>
-            </Nav>
+            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
+              Win-Win
+            </NavItem>
+          </Nav>
 
-        <Nav activeKey={1} pullRight bsstyle="pills">
+          <Nav activeKey={1} pullRight bsstyle="pills">
             <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
               Home
             </NavItem>
-            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
-              About
-            </NavItem>
-            <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
-              Register
-            </NavItem>
-            <NavItem eventKey={2} onSelect={()=>this.props.redirect('Login')}>
-              Login
-            </NavItem>
-          </Nav>
-        </Navbar>
-
-        <h1 className="loginregister">Login</h1>
+            {/* <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
+            About
+          </NavItem> */}
+          <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
+            Register
+          </NavItem>
+          <NavItem eventKey={2} onSelect={()=>this.props.redirect('Login')}>
+            Login
+          </NavItem>
+        </Nav>
+      </Navbar>
+      <div className="container">
+        <h2 className="row">Login</h2>
         <form>
-          <div className="loginregister">
-            <label>ID:    </label>
-            <input type="email" onChange={e => this.onUsernameChange(e)} className="form-control" placeholder='ID'></input>
+          <div className="col-25">
+            <label>Email:</label><br></br>
+            <input type="email" onChange={e => this.onUsernameChange(e)}  ></input>
           </div>
-          <div className="loginregister">
-            <label>Password</label>
-            <input type="password" onChange={e => this.onPasswordChange(e)} className="form-control" placeholder='Password'></input>
+          <div className="col-25">
+            <label>Password</label><br></br>
+            <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
           </div>
-          <div className="loginregister">
             <button type="submit" onClick={e => this.onLogin(e)} className="btn btn-default">Login</button>
-          </div>
         </form>
       </div>
-    );
-  }
+    </div>
+  );
+}
 }

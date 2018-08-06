@@ -5,7 +5,6 @@ var userSchema = new mongoose.Schema({
   username:
   {type: String,
   unique: true},
-  // googleId: String
   password: String,
   yourshopname: String,
   street: String,
@@ -23,16 +22,26 @@ var itemSchema = new mongoose.Schema({
   // time: String,
 });
 
-var tradeSchema = new mongoose.Schema({
-  status: String,
-  itemfrom: String,
-  itemto: String,
-  location: [Number, Number],
-  time: String
-})
+var locationSchema = new mongoose.Schema({
+  yourshopname: String,
+  street: String,
+  city: String,
+  state: String,
+  zipcode: Number
+});
+
+
+// var tradeSchema = new mongoose.Schema({
+//   status: String,
+//   itemfrom: String,
+//   itemto: String,
+//   location: [Number, Number],
+//   time: String
+// })
 
 module.exports = {
   User: mongoose.model('User', userSchema),
   Item: mongoose.model('Item', itemSchema),
-  Trade: mongoose.model('Trade', tradeSchema)
+  Location: mongoose.model('Location', locationSchema),
+  // Trade: mongoose.model('Trade', tradeSchema)
 };

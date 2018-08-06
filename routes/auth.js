@@ -13,6 +13,28 @@ module.exports = function(passport) {
     var u = new models.User({
       username: req.body.username,
       password: req.body.password,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname
+      // yourshopname: req.body.yourshopname,
+      // street: req.body.street,
+      // city: req.body.city,
+      // state: req.body.state,
+      // zipcode: req.body.zipcode
+    });
+    u.save(function(err, user) {
+      if (err) {
+        console.log(err);
+        res.status(500).json({err: err.message});
+        return;
+      }
+      console.log(user);
+      res.status(200).json({success: true});
+    });
+  });
+
+  router.post('/location', function(req, res) {
+
+    var u = new models.User({
       yourshopname: req.body.yourshopname,
       street: req.body.street,
       city: req.body.city,
@@ -29,6 +51,8 @@ module.exports = function(passport) {
       res.status(200).json({success: true});
     });
   });
+
+
 
   router.post('/login', passport.authenticate('local'), (req, res) => {
     res.send("User logged in");
@@ -48,19 +72,7 @@ module.exports = function(passport) {
     res.json({sucess: true});
   });
 
-// //auth with google
-//   router.get('/google', passport.authenticate('google', {
-//     scope: ['profile']
-//   }));
-//
-// //callback route for google to redirect to
-// router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-//   res.send(req.user);
-// })
-//
-// router.get('/', (req, res)=> {
-//   res.send('you are loggedin, this is your profile' + req.user.username)
-// })
+
 
   return router;
 };

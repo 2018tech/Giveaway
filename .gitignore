@@ -25,3 +25,4 @@ out
 env.sh
 package-lock.json
 server.js
+main.js
