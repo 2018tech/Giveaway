@@ -10,7 +10,7 @@
         "lon": "-122.4138666999999"
       },
       "geometry": {
-        "type": "Point",
+        "point": "Point",
         "coordinates": [
           -122.4138666999999,
           37.7747296

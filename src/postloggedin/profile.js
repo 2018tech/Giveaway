@@ -16,15 +16,7 @@ export default class Profile extends React.Component {
 
     onLocation(e) {
       e.preventDefault();
-      // if (this.state.firstname === ''){
-      //   alert("Forgot to put your firstname!")
-      // }else if(this.state.lastname ===''){
-      //   alert("Forgot to put your lastname!")
-      // }  else if(this.state.password.length <= 5){
-      //   alert("Your password needs to be at least 6 characters")
-      // }else if(this.state.password !== this.state.passwordconfirm){
-      //   alert('Passwords did not match')
-      // }else
+  
       fetch('/location', {
         method: 'POST',
         headers: {

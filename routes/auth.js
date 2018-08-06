@@ -33,17 +33,18 @@ module.exports = function(passport) {
   });
 
   router.post('/location', async function(req, res) {
-    var u = new models.User({
-      yourshopname: req.body.yourshopname,
-      street: req.body.street,
-      city: req.body.city,
-      state: req.body.state,
-      zipcode: req.body.zipcode
-    });
+    // var u = new models.User({
+    //   yourshopname: req.body.yourshopname,
+    //   street: req.body.street,
+    //   city: req.body.city,
+    //   state: req.body.state,
+    //   zipcode: req.body.zipcode
+    // });
+    console.log('before await')
     var geoconvert;
      await geocoder.geocode(`${req.body.street} ${req.body.city} ${req.body.state} ${req.body.zipcode}`,
       function(err, res) {
-        geoconvert = {
+       geoconvert = new models.Location({
             "type": "Feature",
             "properties": {
               "place": "Your Shop",
@@ -52,23 +53,41 @@ module.exports = function(passport) {
               "lon": `${res[0].longitude}`
             },
             "geometry": {
-              "type": "Point",
-              "coordinates": [
+              "point": "Point",
+               "coordinates": [
                 res[0].longitude,
-                res[0].latitude
-              ]
+              res[0].latitude
+           ]
             }
-          }}
-        )
-    u.save(function(err, user) {
-      if (err) {
-        console.log(err);
-        res.status(500).json({err: err.message});
-        return;
-      }
-      res.status(200).json({location: geoconvert});
-    });
-  });
+          })
+      })
+      geoconvert.save(function(err, user) {
+        if (err) {
+          console.log(err);
+          res.status(500).json({err: err.message});
+          return;
+        }
+        res.status(200).json({
+        location: geoconvert});
+      })
+    })
+
+    router.get('/usershop', function(req,res){
+      models.Location.find({})
+      .then( (loc) =>  {
+        console.log('sends res', loc)
+        console.log('SEND!!!')
+        res.json(loc)
+      })
+      // (function(err, res){
+      //   if (err){
+      //     console.log(err);
+      //     return {err}
+      //   }else
+      //   console.log('INSIDE USERSHOP');
+      //   // res.json(res)
+      // })
+    })
 
 
   router.post('/login', passport.authenticate('local'), (req, res) => {
