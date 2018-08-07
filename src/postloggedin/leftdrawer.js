@@ -38,7 +38,7 @@ export default class LeftDrawer extends React.Component {
   onCollection(e){
     this.props.redirect('Collection')
   }
-  
+
 
 
   render() {
