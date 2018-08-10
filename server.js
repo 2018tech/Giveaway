@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 var logger = require('morgan');
 
-
 var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 var session = require('express-session');
@@ -15,18 +14,11 @@ mongoose.connect(process.env.MONGODB_URI);
 
 var auth = require("./routes/auth");
 
-
-
 var User = require('./models/models').User;
 var Item = require('./models/models').Item;
 var Location = require('./models/models').Location;
 
 const app = express();
-
-
-
-
-
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -48,7 +40,6 @@ passport.deserializeUser(function(id, done) {
 // passport localstrategy
 passport.use(new LocalStrategy(function(username, password, done) {
   // Find the user with the given username
-  console.log('hi');
   User.findOne({ username: username }, function (err, user) {
     // if there's an error, finish trying to authenticate (auth failed)
     if (err) {
@@ -80,7 +71,6 @@ app.use(function(err, req, res, next) {
 });
 
 app.post('/postitem', async function(req, res){
-  console.log(req.user)
   const user = await User.findById(req.user._id)
   var newitem = new Item({
     name: req.body.name,

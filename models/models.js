@@ -6,7 +6,8 @@ var userSchema = new mongoose.Schema({
   lastname: String,
   username: {type: String, unique: true},
   password: String,
-  items: [{type: mongoose.Schema.ObjectId, ref: 'Item'}]
+  items: [{type: mongoose.Schema.ObjectId, ref: 'Item'}],
+  locations: {type: mongoose.Schema.ObjectId, ref: 'Location'},
 });
 
 var itemSchema = new mongoose.Schema({
@@ -18,23 +19,10 @@ var itemSchema = new mongoose.Schema({
 });
 
 var locationSchema = new mongoose.Schema({
-  yourshopname: String,
-  street: String,
-  city: String,
-  state: String,
-  zipcode: Number,
-  type: String,
-  properties: {
-    place: String,
-    login: String,
-    lat: String,
-    lon: String
-  },
-  geometry: {
-    point: String,
-    coordinates: [Number, Number],
-  }});
-
+  stations: String,
+  position: Array,
+  yourshopname: String
+  });
 
   // var tradeSchema = new mongoose.Schema({
   //   status: String,

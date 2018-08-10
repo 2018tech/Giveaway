@@ -132,3 +132,8 @@ body{
     align-content: center;
     justify-content: center;
 }
+
+
+div.image{
+   content: url("https://www.w3schools.com/w3css/img_lights.jpg")
+}

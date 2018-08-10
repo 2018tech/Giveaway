@@ -49,12 +49,6 @@ export default class Login extends React.Component {
     })
     .catch(err => console.log('Error ', err));
   }
-  // <Button onClick={()=> this.props.redirect('Register')}>Register</Button>
-  // <Button onClick={()=> this.props.redirect('About')}>About</Button>
-
-
-
-
 
   render() {
     return (
