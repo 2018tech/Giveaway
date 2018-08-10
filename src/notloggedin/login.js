@@ -56,7 +56,7 @@ export default class Login extends React.Component {
         <Navbar>
           <Nav activeKey={1} pullLeft bsstyle="pills">
             <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
-              Win-Win
+              Welcome to Giveaway
             </NavItem>
           </Nav>
 
@@ -86,7 +86,7 @@ export default class Login extends React.Component {
             <label>Password</label><br></br>
             <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
           </div>
-            <button type="submit" onClick={e => this.onLogin(e)} className="btn btn-default">Login</button>
+          <button type="submit" onClick={e => this.onLogin(e)} className="btn btn-default">Login</button>
         </form>
       </div>
     </div>

@@ -43,7 +43,7 @@ export default class LeftDrawer extends React.Component {
     return (
       <Drawer>
         <RaisedButton style={{display: 'flex', alignItems: 'center'}} label='Logout' onMouseDown={e => this.onLogout(e)} primary={true} />
-        <div className="intro"><p>Win-Win</p></div>
+        <div className="intro"><p>Giveaway</p></div>
         <div className= "tradingground" onClick={e=> this.onMain(e)}>Map Home</div>
         <div className= "profile" onClick={e=> this.onProfile(e)}>User Profile</div>
         <div className="postanitem" onClick={e=>this.onPostanItem(e)}>Post an Item!</div>

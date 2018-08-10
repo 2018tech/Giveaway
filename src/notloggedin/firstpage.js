@@ -4,18 +4,18 @@ import {Navbar, Nav, NavItem} from 'react-bootstrap';
 export default class Firstpage extends React.Component {
   render(){
     return(
-    <div>
-      <Navbar>
-        <Nav activeKey={1} pullLeft bsstyle="pills">
+      <div>
+        <Navbar>
+          <Nav activeKey={1} pullLeft bsstyle="pills">
             <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
-              Win-Win
+              Giveaway
             </NavItem>
           </Nav>
-      <Nav activeKey={1} pullRight bsstyle="pills">
-          <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
-            Home
-          </NavItem>
-          {/* <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
+          <Nav activeKey={1} pullRight bsstyle="pills">
+            <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
+              Home
+            </NavItem>
+            {/* <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
             About
           </NavItem> */}
           <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
@@ -27,7 +27,7 @@ export default class Firstpage extends React.Component {
         </Nav>
       </Navbar>
 
-        <div className="frontpage"><br></br><br></br><br></br><br></br>Trade Anything. Stop Waste. <br></br><br></br><br></br><br></br></div>
+      <div className="frontpage"><br></br><br></br><br></br><br></br>Giveaway. Stop Waste. <br></br><br></br><br></br><br></br></div>
     </div>
   )}
-  }
+}

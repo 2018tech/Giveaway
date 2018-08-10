@@ -99,7 +99,7 @@ export default class Register extends React.Component {
           <Navbar>
             <Nav activeKey={1} pullLeft bsstyle="pills">
               <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
-                Win-Win
+                Almost there!
               </NavItem>
             </Nav>
 

@@ -93,8 +93,8 @@ export default class Profile extends React.Component {
 
   render() {
     return (
-      <div className="profilepage">
-        <p>Email: {this.state.user.username}</p>
+      <div className="postanitempage">
+        <p >Email: {this.state.user.username}</p>
         {/* <p >Password: {this.state.user.password}</p> */}
         <label>Your Shop Name: </label><br></br>
         <input type="yourshopname" onChange={e => this.onyourshopnameChange(e)} placeholder='Your Shop'></input>

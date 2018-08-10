@@ -1,12 +1,8 @@
-body{
-  background-color:#E0FFFF;
-}
-
 .navbar-default .navbar-nav > li > a {
-      color: black;
-      font-weight: 400;
-      font-style: Helvetica;
-      font-size: 20px;
+  color: black;
+  font-weight: 400;
+  font-style: Helvetica;
+  font-size: 20px;
 }
 
 .home {
@@ -28,7 +24,6 @@ body{
 }
 
 .tradingground{
-  background-color: #E0FFFF;
   text-align: center;
   font-family: Helvetica;
   font-size: 30px;
@@ -39,7 +34,6 @@ body{
 
 }
 .profile{
-  background-color: #E0FFFF;
   text-align: center;
   font-family: Helvetica;
   font-size: 30px;
@@ -49,7 +43,6 @@ body{
   padding:22px;
 }
 .postanitem{
-  background-color: #E0FFFF;
   text-align: center;
   font-family: Helvetica;
   font-size: 30px;
@@ -59,7 +52,6 @@ body{
   padding:22px;
 }
 .collection{
-  background-color: #E0FFFF;
   text-align: center;
   font-family: Helvetica;
   font-size: 30px;
@@ -69,7 +61,6 @@ body{
   padding:22px;
 }
 .tradehistory{
-  background-color: #E0FFFF;
   text-align: center;
   font-family: Helvetica;
   font-size: 30px;
@@ -93,13 +84,6 @@ body{
   background-color: white;
 }
 
-.popup{
-  color: black;
-  width: 150;
-  height: 150;
-  borderRadius: 120;
-}
-
 .frontpage{
   text-align: center;
   font-size: 55px;
@@ -119,21 +103,43 @@ body{
 }
 
 .col-25 {
-    float: none;
-    width: 75%;
-    margin-top: 6px;
-    align-content: center;
+  float: none;
+  width: 75%;
+  margin-top: 6px;
+  align-content: center;
 }
 
 .col-75 {
-    float: none;
-    width: 75%;
-    margin-top: 6px;
-    align-content: center;
-    justify-content: center;
+  float: none;
+  width: 75%;
+  margin-top: 6px;
+  align-content: center;
+  justify-content: center;
 }
 
+.shopname {
+  color: black;
+  width: 150;
+  height: 150;
+  borderRadius: 120;
+  font-size: 20px;
+  font-family: elephant;
+}
+.item {
+  color: black;
+  width: 150;
+  height: 150;
+  borderRadius: 120;
+  font-size: 12px;
+  font-family: verdana;
+
+}
+#item{
+  float: right;
+  font-size: 12px;
+  font-family: verdana;
+}
 
 div.image{
-   content: url("https://www.w3schools.com/w3css/img_lights.jpg")
+  content: url("https://www.w3schools.com/w3css/img_lights.jpg")
 }
