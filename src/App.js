@@ -9,6 +9,7 @@ import PostanItem from './postloggedin/./postanitem.js';
 import Collection from './postloggedin/./collection.js';
 import Firstpage from './notloggedin/./firstpage.js';
 import Request from './postloggedin/./request.js';
+import MessagePage from './postloggedin/./message.js';
 
 export default class App extends React.Component {
 
@@ -50,6 +51,7 @@ export default class App extends React.Component {
               {this.state.currentPage === 'Collection' ? <Collection redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Firstpage' ? <Firstpage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Request' ? <Request redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
+              {this.state.currentPage === 'MessagePage' ? <MessagePage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
 
             </div>
           </MuiThemeProvider>

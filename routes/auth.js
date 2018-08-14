@@ -80,12 +80,21 @@ module.exports = function(passport) {
       }
     })
 
+    router.get('/currentUserMessage', (req, res) => {
+      if (!req.user){
+        throw 'error'
+      }else{
+        models.User.findById(req.user._id)
+        .then(user=> res.send(user))
+      }
+    })
+
 
     router.post('/timesubmit', (req, res) => {
       models.Location.findOne({yourshopname: req.query.id}).then(location=>{
         models.User.findById(location.stations).then(async user=>{
           var newMessage = new Message({
-            hours: req.body.hours,
+            hour: req.body.hour,
             minutes: req.body.minutes,
             amorpm: req.body.amorpm
           })
@@ -95,32 +104,6 @@ module.exports = function(passport) {
         })
       })
 
-
-
-    //     var newMessage = new Message({
-    //       hour: req.body.hour,
-    //       minutes: req.body.minutes,
-    //       amorpm: req.body.amorpm
-    //     })
-    //     newMessage.save(function(err, user){
-    //       if (err) {
-    //         console.log(err);
-    //         res.status(500).json({err: err.message});
-    //         return;
-    //       }
-    //       console.log(user);
-    //       models.Location.findOne({yourshopname: req.query.id}).push(newMessage).populate('message').exec()
-    //       res.status(200).json({success: true});
-    //     })
-    //   })
-    //
-    //   models.Location.findOne({yourshopname: req.query.id}).populate('message').exec()
-    //   .then((res) => console.log(res))
-    //
-    //   .save()
-    //   .then((res)=> console.log(res))
-    //   .then(Location.message.push(newMessage).save())
-    //   .catch(err => console.log(err))
     })
 
 

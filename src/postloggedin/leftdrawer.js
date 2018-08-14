@@ -39,6 +39,10 @@ export default class LeftDrawer extends React.Component {
     this.props.redirect('Collection')
   }
 
+  onMessagePage(e){
+    this.props.redirect('MessagePage')
+  }
+
   render() {
     return (
       <Drawer>
@@ -48,5 +52,6 @@ export default class LeftDrawer extends React.Component {
         <div className= "profile" onClick={e=> this.onProfile(e)}>User Profile</div>
         <div className="postanitem" onClick={e=>this.onPostanItem(e)}>Post an Item!</div>
         <div className="collection" onClick={e=>this.onCollection(e)}>Collection</div>
+        <div className="collection" onClick={e=>this.onMessagePage(e)}>Message Page</div>
       </Drawer>
     )}};
