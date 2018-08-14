@@ -17,6 +17,7 @@ var auth = require("./routes/auth");
 var User = require('./models/models').User;
 var Item = require('./models/models').Item;
 var Location = require('./models/models').Location;
+var Message = require('./models/models').Message;
 
 const app = express();
 app.use(logger('dev'));

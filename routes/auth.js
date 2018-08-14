@@ -1,10 +1,10 @@
-
 var express = require('express');
 var router = express.Router();
 var models = require('../models/models');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var NodeGeocoder = require('node-geocoder');
+var Message = models.Message;
 
 var options = {
   provider: 'google'
@@ -34,65 +34,31 @@ module.exports = function(passport) {
   router.post('/location', async function(req, res) {
     console.log(req.user._id)
     console.log(req.body)
-      var geoconvert;
-      await geocoder.geocode(`${req.body.street} ${req.body.city} ${req.body.state} ${req.body.zipcode}`,
-        function(err, res) {
-          geoconvert = new models.Location({
-            stations: `${req.user._id}`,
-            position: [res[0].longitude, res[0].latitude],
-            yourshopname: `${req.body.yourshopname}`
-          })
+    var geoconvert;
+    await geocoder.geocode(`${req.body.street} ${req.body.city} ${req.body.state} ${req.body.zipcode}`,
+      function(err, res) {
+        geoconvert = new models.Location({
+          stations: `${req.user._id}`,
+          position: [res[0].longitude, res[0].latitude],
+          yourshopname: `${req.body.yourshopname}`,
         })
-        geoconvert.save(function(err, user) {
-          console.log(user)
-          if (err) {
-
-            console.log(err);
-            res.status(500).json({err: err.message});
-            return;
-          }else{
+      })
+      geoconvert.save(function(err, user) {
+        console.log(user)
+        if (err) {
+          console.log(err);
+          res.status(500).json({err: err.message});
+          return;
+        }else{
           models.User.findByIdAndUpdate(req.user._id, {locations: user._id})
           .then(function(){
             console.log("ASLDKFJ");
-              res.send({success: true})
-            })
-            .catch(err=> console.log(err))
-          }
+            res.send({success: true})
           })
-        })
-
-  // router.post('/location', async function(req, res) {
-  //   console.log(req.user._id)
-  //   console.log(req.body)
-  //   var geoconvert;
-  //   await geocoder.geocode(`${req.body.street} ${req.body.city} ${req.body.state} ${req.body.zipcode}`,
-  //     function(err, res) {
-  //       geoconvert = new models.Location({
-  //         stations: {`${req.user._id}`: {
-  //           position: [res[0].latitude, res[0].longitude],
-  //           yourshopname: `${req.body.yourshopname}`
-  //         }}
-  //       })
-  //     })
-  //     geoconvert.save(function(err, user) {
-  //       console.log(user)
-  //       if (err) {
-  //         console.log(err);
-  //         res.status(500).json({err: err.message});
-  //         return;
-  //       }else{
-  //         models.User.findByIdAndUpdate(req.user._id, {locations: user._id})
-  //         .then(function(){
-  //           console.log("ASLDKFJ");
-  //           res.send({success: true})
-  //         })
-  //         .catch(err=> console.log(err))
-  //       }
-  //     })
-  //   })
-
-    // stations: {"1232323a32": {position: [-122.4138666999999, 37.7747296], yourshopname: "Horizons HQ", address: "450 9th St floor 1, San Francisco, CA 94103"}},
-
+          .catch(err=> console.log(err))
+        }
+      })
+    })
 
     router.get('/usershop', function(req, res){
       models.User.find({}).populate('locations').populate('items')
@@ -113,6 +79,52 @@ module.exports = function(passport) {
         .then(user=>res.send(user))
       }
     })
+
+
+    router.post('/timesubmit', (req, res) => {
+      models.Location.findOne({yourshopname: req.query.id}).then(location=>{
+        models.User.findById(location.stations).then(async user=>{
+          var newMessage = new Message({
+            hours: req.body.hours,
+            minutes: req.body.minutes,
+            amorpm: req.body.amorpm
+          })
+          var messageToPush = await newMessage.save();
+          user.messages.push(messageToPush);
+          await user.save();
+        })
+      })
+
+
+
+    //     var newMessage = new Message({
+    //       hour: req.body.hour,
+    //       minutes: req.body.minutes,
+    //       amorpm: req.body.amorpm
+    //     })
+    //     newMessage.save(function(err, user){
+    //       if (err) {
+    //         console.log(err);
+    //         res.status(500).json({err: err.message});
+    //         return;
+    //       }
+    //       console.log(user);
+    //       models.Location.findOne({yourshopname: req.query.id}).push(newMessage).populate('message').exec()
+    //       res.status(200).json({success: true});
+    //     })
+    //   })
+    //
+    //   models.Location.findOne({yourshopname: req.query.id}).populate('message').exec()
+    //   .then((res) => console.log(res))
+    //
+    //   .save()
+    //   .then((res)=> console.log(res))
+    //   .then(Location.message.push(newMessage).save())
+    //   .catch(err => console.log(err))
+    })
+
+
+
 
     router.get('/logout', function(req, res) {
       req.logout();

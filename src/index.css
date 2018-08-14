@@ -143,3 +143,7 @@
 div.image{
   content: url("https://www.w3schools.com/w3css/img_lights.jpg")
 }
+
+.timecontainer {
+  text-align: center;
+}
