@@ -4,11 +4,11 @@ export default class MessagePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {}
+      messages: []
     };
   };
 
-  componentDidMount(){
+  componentWillMount(){
     fetch('/currentUserMessage', {
       method: 'GET',
       credentials: 'same-origin',
@@ -18,22 +18,28 @@ export default class MessagePage extends React.Component {
     })
     .then(res=> res.json())
     .then(res => {
-      this.setState({
-        user: res
+      console.log(res.messages)
+       this.setState({
+        messages: res.messages
       })
+      console.log(this.state.messages);
     }).catch(err => console.log(err))
   }
 
   render() {
-    {console.log(this.state.user)}
-    {console.log(this.state.user.messages)}
-  //this.state.user.messages.map(item=> {
-    //   return hours: item["hour"]
-    // })
-    // {console.log(eachmessage)}
+    const renderitems = this.state.messages.map((item, i)=> {
+        return (
+          <div key={i}>
+            <p>Someone will pick up your item at {item.hour}: {item.minutes} {item.amorpm}</p>
+          </div>
+        )
+      })
+
 
   return (
     <div className="postanitempage">
+      <h2>Messages</h2>
+      {renderitems}
     </div>
   );
 }

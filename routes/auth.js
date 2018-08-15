@@ -89,7 +89,6 @@ module.exports = function(passport) {
       }
     })
 
-
     router.post('/timesubmit', (req, res) => {
       models.Location.findOne({yourshopname: req.query.id}).then(location=>{
         models.User.findById(location.stations).then(async user=>{
@@ -103,11 +102,7 @@ module.exports = function(passport) {
           await user.save();
         })
       })
-
     })
-
-
-
 
     router.get('/logout', function(req, res) {
       req.logout();

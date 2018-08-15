@@ -90,49 +90,6 @@ app.get('/collection', async function(req, res){
   res.send(items)
 })
 
-
-
-
-//homepage all the items
-// app.get('/home', function(req, res){
-//   Item.find({}, (err, documents) => {
-//     if (err) res.status(500).end(err.message)
-//     else res.json(documents)
-//   })
-// });
-// //profile pagee
-// app.get('/profile', function(req, res){
-//   User.findById(req.query.id, (err, doc) => {
-//     if (err) res.status(500).end(err.message)
-//     else res.json(doc)
-//   })
-// })
-//
-// //collection PAGE!
-// app.get('/collection', function(req, res) {
-//   Item.findById(req.query.id, (err, doc) => {
-//     if (err) res.status(500).end(err.message)
-//     else res.json(doc)
-//   });
-// });
-//
-// //trade history
-// app.delete('/item/:id', function(req, res) {
-//   if (req.user === user){
-//     res.send('DELETE REQUEST')
-//   }
-// });
-// //
-// // app.use(function(req, res, next) {
-// //   var err = new Error('Not Found');
-// //   err.status = 404;
-// //   next(err);
-// // });
-//
-// app.get('/ping', function (req, res) {
-//  return res.send('pong');
-// });
-
 // DO NOT REMOVE THIS LINE :)
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));

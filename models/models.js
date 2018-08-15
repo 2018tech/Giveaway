@@ -5,7 +5,7 @@ var messageSchema = new mongoose.Schema({
   hour: Number,
   minutes: Number,
   amorpm: String
-})
+});
 
 var userSchema = new mongoose.Schema({
   firstname: String,
@@ -25,21 +25,11 @@ var itemSchema = new mongoose.Schema({
   // time: String,
 });
 
-
 var locationSchema = new mongoose.Schema({
   stations: String,
   position: Array,
   yourshopname: {type: String, unique: true}
   });
-
-
-  // var tradeSchema = new mongoose.Schema({
-  //   status: String,
-  //   itemfrom: String,
-  //   itemto: String,
-  //   location: [Number, Number],
-  //   time: String
-  // })
 
   module.exports = {
     User: mongoose.model('User', userSchema),
