@@ -16,13 +16,6 @@
   color: black;
 }
 
-.intro{
-  text-align: center;
-  font-family: Helvetica;
-  font-size: 32px;
-  padding:10px;
-}
-
 .tradingground{
   text-align: center;
   font-family: Helvetica;
@@ -51,7 +44,7 @@
   margin:0;
   padding:22px;
 }
-.collection{
+.messagepage{
   text-align: center;
   font-family: Helvetica;
   font-size: 30px;

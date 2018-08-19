@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios'
 
 export default class PostanItem extends React.Component {
   constructor(props) {
@@ -6,7 +7,8 @@ export default class PostanItem extends React.Component {
     this.state = {
       name: "",
       description: "",
-      value: 0
+      value: 0,
+      items: []
     };
   };
 
@@ -28,6 +30,10 @@ export default class PostanItem extends React.Component {
     })
   }
 
+  componentDidMount() {
+    axios.get('/collection').then(res=> this.setState({ items: res.data}))
+  };
+
   onPostanItem(e) {
     e.preventDefault();
     fetch('/postitem', {
@@ -47,7 +53,7 @@ export default class PostanItem extends React.Component {
         case 200:
         console.log(res);
         console.log('User added: ', this.state.username);
-        this.props.app.setState({currentPage: "Collection"});
+        this.props.app.setState({currentPage: "Mainpage"});
         break;
         default:
         console.log(res.status);
@@ -57,6 +63,17 @@ export default class PostanItem extends React.Component {
   }
 
   render() {
+    const renderitems = () => {
+      return this.state.items.map((item, i)=> {
+        return (
+          <div key={i}>
+            <p>Item Name: {item.name}</p>
+            <p>Item Description: {item.description}</p>
+            <p>Item Value: {item.value}</p>
+          </div>
+        )
+      })
+    }
     return (
       <div className="postanitempage">
         <form>
@@ -75,6 +92,9 @@ export default class PostanItem extends React.Component {
           </div>
           <button type="submit" onClick={e => this.onPostanItem(e)} className="btn btn-default">Post an Item</button>
         </form>
+        <br></br>
+        All Items
+        {renderitems()}
       </div>
 
     );

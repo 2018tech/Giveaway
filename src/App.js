@@ -6,7 +6,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import LeftDrawer from './postloggedin/./leftdrawer.js';
 import Profile from './postloggedin/./profile.js';
 import PostanItem from './postloggedin/./postanitem.js';
-import Collection from './postloggedin/./collection.js';
 import Firstpage from './notloggedin/./firstpage.js';
 import Request from './postloggedin/./request.js';
 import MessagePage from './postloggedin/./message.js';
@@ -48,7 +47,6 @@ export default class App extends React.Component {
               {this.state.currentPage === 'Mainpage' ? <Mainpage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Profile' ? <Profile redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'PostanItem' ? <PostanItem redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
-              {this.state.currentPage === 'Collection' ? <Collection redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Firstpage' ? <Firstpage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Request' ? <Request redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'MessagePage' ? <MessagePage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
