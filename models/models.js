@@ -20,9 +20,7 @@ var userSchema = new mongoose.Schema({
 var itemSchema = new mongoose.Schema({
   name: String,
   description: String,
-  value: Number,
-  // location: [Number, Number],
-  // time: String,
+  value: Number
 });
 
 var locationSchema = new mongoose.Schema({
@@ -36,5 +34,4 @@ var locationSchema = new mongoose.Schema({
     Item: mongoose.model('Item', itemSchema),
     Location: mongoose.model('Location', locationSchema),
     Message: mongoose.model('Message', messageSchema)
-    // Trade: mongoose.model('Trade', tradeSchema)
   };
