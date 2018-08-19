@@ -1,7 +1,6 @@
 import React from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
-
 export default class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -45,9 +44,6 @@ export default class Register extends React.Component {
     });
   };
 
-
-
-
   onRegister(e) {
     e.preventDefault();
     if (this.state.firstname === ''){
@@ -71,11 +67,6 @@ export default class Register extends React.Component {
         username: this.state.username,
         password: this.state.password,
         passwordconfirm: this.state.passwordconfirm
-        // yourshopname: this.state.yourshopname,
-        // street: this.state.street,
-        // city: this.state.city,
-        // state: this.state.state,
-        // zipcode: this.state.zipcode
       })
     })
     .then(res => {
@@ -107,49 +98,46 @@ export default class Register extends React.Component {
               <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
                 Home
               </NavItem>
-              {/* <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
-              About
-            </NavItem> */}
-            <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
-              Register
-            </NavItem>
-            <NavItem eventKey={2} onSelect={()=>this.props.redirect('Login')}>
-              Login
-            </NavItem>
-          </Nav>
-        </Navbar>
-      </div>
-      <div className="container">
-        <div className="row">
-          <h2 >Register</h2>
-          <div>
-            <form>
-              <div className="col-25">
-                <label>First name: </label><br></br>
-                <input type="firstname" onChange={e => this.onFnameChange(e)}></input>
-              </div>
-              <div className="col-25">
-                <label>Last name: </label><br></br>
-                <input type="lastname" onChange={e => this.onLnameChange(e)}></input>
-              </div>
-              <div className="col-25">
-                <label>Email: </label><br></br>
-                <input type="email" onChange={e => this.onUsernameChange(e)}></input>
-              </div>
-              <div className="col-75">
-                <label>Password: </label><br></br>
-                <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
-              </div>
-              <div>
-                <label>Re-enter password: </label><br></br>
-                <input type="password" onChange={e => this.onPasswordConfirm(e)}></input>
-              </div><br></br>
-              <button type="submit" onClick={e => this.onRegister(e)} className="btn btn-default">Register</button>
-            </form>
+              <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
+                Register
+              </NavItem>
+              <NavItem eventKey={2} onSelect={()=>this.props.redirect('Login')}>
+                Login
+              </NavItem>
+            </Nav>
+          </Navbar>
+        </div>
+        <div className="container">
+          <div className="row">
+            <h2 >Register</h2>
+            <div>
+              <form>
+                <div className="col-25">
+                  <label>First name: </label><br></br>
+                  <input type="firstname" onChange={e => this.onFnameChange(e)}></input>
+                </div>
+                <div className="col-25">
+                  <label>Last name: </label><br></br>
+                  <input type="lastname" onChange={e => this.onLnameChange(e)}></input>
+                </div>
+                <div className="col-25">
+                  <label>Email: </label><br></br>
+                  <input type="email" onChange={e => this.onUsernameChange(e)}></input>
+                </div>
+                <div className="col-75">
+                  <label>Password: </label><br></br>
+                  <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
+                </div>
+                <div>
+                  <label>Re-enter password: </label><br></br>
+                  <input type="password" onChange={e => this.onPasswordConfirm(e)}></input>
+                </div><br></br>
+                <button type="submit" onClick={e => this.onRegister(e)} className="btn btn-default">Register</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }

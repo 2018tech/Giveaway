@@ -64,9 +64,6 @@ export default class Login extends React.Component {
             <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
               Home
             </NavItem>
-            {/* <NavItem eventKey={2}  onSelect={()=>this.props.redirect('About')}>
-            About
-          </NavItem> */}
           <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
             Register
           </NavItem>
