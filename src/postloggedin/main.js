@@ -98,7 +98,8 @@ render() {
         >
           <Layer
             type="symbol"
-            layout={{ "icon-image": "harbor-15" }}>
+            id="marker"
+            layout={{ "icon-image": "shop-15" }}>
             {Object.keys(this.state.stations).map((stationkey, index) => {
               return (<Feature
                 onClick={this.markerClick.bind(this, this.state.stations[stationkey])}

@@ -85,7 +85,7 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="mainfrontpage">
         <div>
           <Navbar>
             <Nav activeKey={1} pullLeft bsstyle="pills">
@@ -93,7 +93,6 @@ export default class Register extends React.Component {
                 Almost there!
               </NavItem>
             </Nav>
-
             <Nav activeKey={1} pullRight bsstyle="pills">
               <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
                 Home
@@ -107,8 +106,8 @@ export default class Register extends React.Component {
             </Nav>
           </Navbar>
         </div>
-        <div className="container">
-          <div className="row">
+        <div className="lightgreen">
+        <div className="container" id="lightgreen">
             <h2 >Register</h2>
             <div>
               <form>
@@ -135,9 +134,10 @@ export default class Register extends React.Component {
                 <button type="submit" onClick={e => this.onRegister(e)} className="btn btn-default">Register</button>
               </form>
             </div>
-          </div>
         </div>
+        <div className="registerbelow"></div>
       </div>
+    </div>
     );
   }
 }

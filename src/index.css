@@ -11,11 +11,6 @@
   text-align: center;
 }
 
-.loginregister {
-  text-align: center;
-  color: black;
-}
-
 .tradingground{
   text-align: center;
   font-family: Helvetica;
@@ -77,11 +72,44 @@
   background-color: white;
 }
 
+.navbar-default .navbar-nav > li > a {
+     color: black;
+   }
+
 .frontpage{
   text-align: center;
   font-size: 55px;
   font-family: Helvetica;
+  background-color: #20B2AA;
+  margin: auto 10px;
+  width: auto;
+  height: 800px;
 }
+
+.mainfrontpage {
+  background-color: #20B2AA;
+}
+
+.registerbelow{
+  text-align: center;
+  font-size: 55px;
+  font-family: Helvetica;
+  background-color: #20B2AA;
+  margin: auto 10px;
+  width: auto;
+  height: 400px;
+}
+
+.loginbelow{
+  text-align: center;
+  font-size: 55px;
+  font-family: Helvetica;
+  background-color: #20B2AA;
+  margin: auto 10px;
+  width: auto;
+  height: 600px;
+}
+
 
 .ourteam{
   text-align: center;
@@ -100,6 +128,14 @@
   width: 75%;
   margin-top: 6px;
   align-content: center;
+}
+
+.lightgreen {
+  background-color: #20B2AA;
+}
+
+#lightgreen {
+  background-color: #20B2AA;
 }
 
 .col-75 {

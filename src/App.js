@@ -10,6 +10,7 @@ import Firstpage from './notloggedin/./firstpage.js';
 import Request from './postloggedin/./request.js';
 import MessagePage from './postloggedin/./message.js';
 
+
 export default class App extends React.Component {
 
   constructor(props) {
@@ -17,9 +18,12 @@ export default class App extends React.Component {
     this.state = {
       currentPage: "Firstpage",
       loggedIn: false
+
     };
     this.setLogin = this.setLogin.bind(this)
-    this.redirect = this.redirect.bind(this);
+    this.redirect = this.redirect.bind(this)
+    this.handleClickAway = this.handleClickAway.bind(this)
+
   };
   //page is like 'Home'
   redirect(page, options) {
@@ -32,16 +36,16 @@ export default class App extends React.Component {
     this.setState({loggedIn: b})
   };
 
+  handleClickAway() {
+    this.setState({drawerOpen: false})
+};
+
   render() {
     return (
       <div>
         <MuiThemeProvider>
           <div>
-            <div>
-              {this.state.loggedIn ?
-                <LeftDrawer redirect={this.redirect} setLogin={this.setLogin} loggedIn={this.state.loggedIn} />
-                : null}
-              </div>
+            <LeftDrawer redirect={this.redirect} toggle={e => this.toggleDrawer(e)} setLogin={this.setLogin} loggedIn={this.state.loggedIn} />
               {this.state.currentPage === 'Register' ? <Register redirect={this.redirect} app={this}/> : null}
               {this.state.currentPage === 'Login' ? <Login redirect={this.redirect} app={this} setLogin={this.setLogin} /> : null}
               {this.state.currentPage === 'Mainpage' ? <Mainpage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
@@ -51,6 +55,7 @@ export default class App extends React.Component {
               {this.state.currentPage === 'Request' ? <Request redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'MessagePage' ? <MessagePage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
             </div>
+
           </MuiThemeProvider>
         </div>
       );

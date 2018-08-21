@@ -4,7 +4,7 @@ import {Navbar, Nav, NavItem} from 'react-bootstrap';
 export default class Firstpage extends React.Component {
   render(){
     return(
-      <div>
+      <div className="mainfrontpage">
         <Navbar>
           <Nav activeKey={1} pullLeft bsstyle="pills">
             <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
@@ -23,7 +23,6 @@ export default class Firstpage extends React.Component {
           </NavItem>
         </Nav>
       </Navbar>
-
       <div className="frontpage"><br></br><br></br><br></br><br></br>Giveaway. Stop Waste. <br></br><br></br><br></br><br></br></div>
     </div>
   )}
