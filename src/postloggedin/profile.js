@@ -10,7 +10,8 @@ export default class Profile extends React.Component {
       street: '',
       city: '',
       state: '',
-      zipcode: 0
+      zipcode: 0,
+      message: false
     };
   };
 
@@ -35,10 +36,11 @@ export default class Profile extends React.Component {
     .then(res => {
       switch(res.status) {
         case 200:
-        console.log(res);
+        this.setState({message: true})
+        // console.log(res);
         break;
         default:
-        console.log(res.status);
+        // console.log(res.status);
       }
     })
     .catch(err => console.log('Error ', err));
@@ -91,11 +93,12 @@ export default class Profile extends React.Component {
     }).catch(err => console.log(err))
   }
 
+
+
   render() {
     return (
       <div className="postanitempage">
-        <p >Email: {this.state.user.username}</p>
-        {/* <p >Password: {this.state.user.password}</p> */}
+        <div className="titles"><p>Welcome, {this.state.user.firstname}! To giveaway your stuff, please enter your address!</p></div>
         <label>Your Shop Name: </label><br></br>
         <input type="yourshopname" onChange={e => this.onyourshopnameChange(e)} placeholder='Your Shop'></input>
         <div>
@@ -117,6 +120,8 @@ export default class Profile extends React.Component {
         <div>
           <button type="submit" onClick={e => this.onLocation(e)} className="btn btn-default">Submit</button>
         </div>
+        {this.state.message ? <p className="message">Your Location has been added! To edit, simply re-enter your address.</p>: null}
+        <div className="registerbelow"></div>
       </div>
     );
   }

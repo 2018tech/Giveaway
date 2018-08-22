@@ -53,7 +53,6 @@ export default class PostanItem extends React.Component {
         case 200:
         console.log(res);
         console.log('User added: ', this.state.username);
-        this.props.app.setState({currentPage: "Mainpage"});
         break;
         default:
         console.log(res.status);
@@ -67,9 +66,9 @@ export default class PostanItem extends React.Component {
       return this.state.items.map((item, i)=> {
         return (
           <div key={i}>
-            <p>Item Name: {item.name}</p>
-            <p>Item Description: {item.description}</p>
-            <p>Item Value: {item.value}</p>
+            <p>
+        {i+1}. Name: {item.name}; Description: {item.description}; Value: {item.value}
+            </p>
           </div>
         )
       })
@@ -77,24 +76,19 @@ export default class PostanItem extends React.Component {
     return (
       <div className="postanitempage">
         <form>
-          <div>Post Your Item</div>
-          <div>
+          <div className="titles">Post Your Item</div>
             Name:
-            <input type="name" onChange={e => this.onNamechange(e)} placeholder='Name of Your Item'></input>
-          </div>
-          <div>
+            <input type="name" onChange={e => this.onNamechange(e)}></input>
             Description:
-            <input type="description" onChange={e => this.onDescriptionchange(e)} placeholder='Item Description'></input>
-          </div>
-          <div>
+            <input type="description" onChange={e => this.onDescriptionchange(e)}></input>
             Value:
-            <input type="value" onChange={e => this.onValuechange(e)} placeholder='How much is your good?'></input>
-          </div>
-          <button type="submit" onClick={e => this.onPostanItem(e)} className="btn btn-default">Post an Item</button>
+            <input type="value" onChange={e => this.onValuechange(e)}></input>
+          <button type="submit" onClick={e => this.onPostanItem(e)} className="btn btn-default">Post</button>
         </form>
         <br></br>
-        All Items
+        <div className="titles"><p>All Items</p></div>
         {renderitems()}
+        <div className="itembelow"></div>
       </div>
 
     );

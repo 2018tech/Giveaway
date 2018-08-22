@@ -1,62 +1,14 @@
 .navbar-default .navbar-nav > li > a {
-  color: black;
-  font-weight: 400;
-  font-style: Helvetica;
-  font-size: 20px;
+  color:  black;
+  font-family: Helvetica;
+  font-size: 25px;
 }
 
-.home {
-  background-color: blue;
-  color: white;
-  text-align: center;
-}
-
-.tradingground{
-  text-align: center;
-  font-family: Helvetica;
-  font-size: 30px;
-  height:auto;
-  width:auto;
-  margin:0;
-  padding:22px;
-
-}
-.profile{
-  text-align: center;
-  font-family: Helvetica;
-  font-size: 30px;
-  height:auto;
-  width:auto;
-  margin:0;
-  padding:22px;
-}
-.postanitem{
-  text-align: center;
-  font-family: Helvetica;
-  font-size: 30px;
-  height:auto;
-  width:auto;
-  margin:0;
-  padding:22px;
-}
-.messagepage{
-  text-align: center;
-  font-family: Helvetica;
-  font-size: 30px;
-  height:auto;
-  width:auto;
-  margin:0;
-  padding:22px;
-}
-.tradehistory{
-  text-align: center;
-  font-family: Helvetica;
-  font-size: 30px;
-  height:auto;
-  width:auto;
-  margin:0;
-  padding:22px;
-}
+.navbar-default {
+  background-color: #FFAAA3;
+  background-image: none;
+  background-repeat: no-repeat;
+ }
 
 .profilepage{
   text-align: center;
@@ -68,13 +20,29 @@
 .postanitempage{
   text-align: center;
   font-family: Helvetica;
-  font-size: 25px;
-  background-color: white;
+  font-size: 18px;
+  background-color: #20B2AA;
 }
 
-.navbar-default .navbar-nav > li > a {
-     color: black;
-   }
+.registerbelow{
+  text-align: center;
+  font-size: 55px;
+  font-family: Helvetica;
+  background-color: #20B2AA;
+  margin: auto 10px;
+  width: auto;
+  height: 400px;
+}
+
+.registerbelow{
+  text-align: center;
+  font-size: 55px;
+  font-family: Helvetica;
+  background-color: #20B2AA;
+  margin: auto 10px;
+  width: auto;
+  height: 400px;
+}
 
 .frontpage{
   text-align: center;
@@ -90,14 +58,14 @@
   background-color: #20B2AA;
 }
 
-.registerbelow{
+.profilebelow{
   text-align: center;
   font-size: 55px;
   font-family: Helvetica;
   background-color: #20B2AA;
   margin: auto 10px;
   width: auto;
-  height: 400px;
+  height: 1000px;
 }
 
 .loginbelow{
@@ -110,6 +78,15 @@
   height: 600px;
 }
 
+.itembelow{
+  text-align: center;
+  font-size: 55px;
+  font-family: Helvetica;
+  background-color: #20B2AA;
+  margin: auto 10px;
+  width: auto;
+  height: 800px;
+}
 
 .ourteam{
   text-align: center;
@@ -175,4 +152,23 @@ div.image{
 
 .timecontainer {
   text-align: center;
+}
+
+.message{
+  color: red;
+}
+
+.messagebelow{
+  text-align: center;
+  font-size: 55px;
+  font-family: Helvetica;
+  background-color: #20B2AA;
+  margin: auto 10px;
+  width: auto;
+  height: 900px;
+}
+
+.titles{
+  font-size: 25px;
+  font-family: Helvetica;
 }

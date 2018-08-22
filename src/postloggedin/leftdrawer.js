@@ -77,7 +77,7 @@ export default class LeftDrawer extends React.Component {
             <MenuItem  style={denseStyle} onClick={e=> this.onMain(e)}><Home />Home</MenuItem>
             <MenuItem style={denseStyle} onClick={e=> this.onProfile(e)}><Account />Your Profile</MenuItem>
             <MenuItem style={denseStyle} onClick={e=>this.onPostanItem(e)}><Gift />Your Items</MenuItem>
-            <MenuItem style={denseStyle} onClick={e=>this.onMessagePage(e)}><Message />Message</MenuItem>
+            <MenuItem style={denseStyle} onClick={e=>this.onMessagePage(e)}><Message />Messages</MenuItem>
             <RaisedButton style={{display: 'flex', alignItems: 'center'}} label='Logout' onMouseDown={e => this.onLogout(e)} primary={true} />
           </Drawer></div> : null}
         </div>

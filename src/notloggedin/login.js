@@ -71,7 +71,6 @@ export default class Login extends React.Component {
           </NavItem>
         </Nav>
       </Navbar>
-
       <div className="lightgreen">
       <div className="container" id="lightgreen">
         <h2>Login</h2>

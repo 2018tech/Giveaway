@@ -46,7 +46,7 @@ export default class Mainpage extends React.Component {
   };
 
   onRequest(e){
-      this.setState({currentPage: "Request"});
+    this.setState({currentPage: "Request"});
   }
 
   componentDidMount() {
@@ -86,44 +86,44 @@ render() {
       {this.state.currentPage === 'Request' ? <Request redirect={this.redirect} setLogin={this.setLogin} app={this}/> : null}
       {this.state.currentPage === 'MainPage'?
       <div className="home"> {this.state.showmap &&
-      <Map
-        container='map'
-        style="mapbox://styles/mapbox/streets-v9"
-        containerStyle={{
-          height: "100vh",
-          width: "100vw"
-        }}
-        center={[this.state.region.longitude, this.state.region.latitude]}
-        zoom={[15]}
-        >
-          <Layer
-            type="symbol"
-            id="marker"
-            layout={{ "icon-image": "shop-15" }}>
-            {Object.keys(this.state.stations).map((stationkey, index) => {
-              return (<Feature
-                onClick={this.markerClick.bind(this, this.state.stations[stationkey])}
-                coordinates={this.state.stations[stationkey]["position"]}
-              />)
-            })}
-          </Layer>
-          {this.state.showPopup ?
-            <Popup
-              coordinates={this.state.station["position"]}
-              >
-                <div className="shopname">
-                  Welcome to {this.state.station.yourshopname}
-                  <div className="item">
-                    {this.state.station["items"].map(item=> <p>Name: {[item["name"]]}<br></br> Description: {item[["description"]]}<br></br> Value: {item[["value"]]}</p>)}
+        <Map
+          container='map'
+          style="mapbox://styles/mapbox/streets-v9"
+          containerStyle={{
+            height: "100vh",
+            width: "100vw"
+          }}
+          center={[this.state.region.longitude, this.state.region.latitude]}
+          zoom={[15]}
+          >
+            <Layer
+              type="symbol"
+              id="marker"
+              layout={{ "icon-image": "shop-15" }}>
+              {Object.keys(this.state.stations).map((stationkey, index) => {
+                return (<Feature
+                  onClick={this.markerClick.bind(this, this.state.stations[stationkey])}
+                  coordinates={this.state.stations[stationkey]["position"]}
+                />)
+              })}
+            </Layer>
+            {this.state.showPopup ?
+              <Popup
+                coordinates={this.state.station["position"]}
+                >
+                  <div className="shopname">
+                    Welcome to {this.state.station.yourshopname}
+                    <div className="item">
+                      {this.state.station["items"].map(item=> <p>Name: {[item["name"]]}<br></br> Description: {item[["description"]]}<br></br> Value: {item[["value"]]}</p>)}
+                    </div>
+                    <div id="item">
+                      <button onClick={e=> this.onRequest(e)}>Request</button>
+                      <button onClick={e => this.onCancel(e)}>Cancel</button>
+                    </div>
                   </div>
-                  <div id="item">
-                    <button onClick={e=> this.onRequest(e)}>Request</button>
-                    <button onClick={e => this.onCancel(e)}>Cancel</button>
-                  </div>
-                </div>
-              </Popup>: null}
-            </Map>
-          }</div>: null}
-        </div>
+                </Popup>: null}
+              </Map>
+            }</div>: null}
+          </div>
         )}
       }
