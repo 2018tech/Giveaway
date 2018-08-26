@@ -37,10 +37,8 @@ export default class Profile extends React.Component {
       switch(res.status) {
         case 200:
         this.setState({message: true})
-        // console.log(res);
         break;
         default:
-        // console.log(res.status);
       }
     })
     .catch(err => console.log('Error ', err));

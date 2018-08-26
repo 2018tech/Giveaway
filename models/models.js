@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
 
 var messageSchema = new mongoose.Schema({
+  messagefrom: String,
   hour: Number,
   minutes: Number,
   amorpm: String

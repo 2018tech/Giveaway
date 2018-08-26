@@ -22,7 +22,6 @@ export default class MessagePage extends React.Component {
        this.setState({
         messages: res.messages
       })
-      console.log(this.state.messages);
     }).catch(err => console.log(err))
   }
 
@@ -30,7 +29,7 @@ export default class MessagePage extends React.Component {
     const renderitems = this.state.messages.map((item, i)=> {
         return (
           <div key={i}>
-            <p>Someone will pick up your item at {item.hour}: {item.minutes} {item.amorpm}</p>
+            <p>{item.messagefrom} will pick up your item at {item.hour}: {item.minutes} {item.amorpm}</p>
           </div>
         )
       })
