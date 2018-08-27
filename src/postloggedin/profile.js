@@ -97,7 +97,7 @@ export default class Profile extends React.Component {
     return (
       <div className="postanitempage">
         <div className="titles"><p>Welcome, {this.state.user.firstname}! To giveaway your stuff, please enter your address!</p></div>
-        <label>Your Shop Name: </label><br></br>
+        <label>Dorm & Room: </label><br></br>
         <input type="yourshopname" onChange={e => this.onyourshopnameChange(e)} placeholder='Your Shop'></input>
         <div>
           <label>Street: </label><br></br>

@@ -8,7 +8,7 @@ export default class Request extends React.Component {
       minutes: 0,
       amorpm: '',
       item: ''
-    };
+        };
   };
 
   onhourChange(e) {
@@ -57,7 +57,7 @@ export default class Request extends React.Component {
     .then(res => {
       switch(res.status) {
         case 200:
-        this.props.app.setState({currentPage: "MainPage"});
+        this.setState({message: true})
         break;
         default:
         console.log(res.status);
