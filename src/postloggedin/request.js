@@ -6,7 +6,8 @@ export default class Request extends React.Component {
     this.state = {
       hour: 0,
       minutes: 0,
-      amorpm: ''
+      amorpm: '',
+      item: ''
     };
   };
 
@@ -28,6 +29,12 @@ export default class Request extends React.Component {
     });
   };
 
+  onitemChange(e){
+    this.setState({
+      item: e.target.value
+    });
+  };
+
   ongobacktoMaps(e){
     this.props.redirect('MainPage')
   }
@@ -41,6 +48,7 @@ export default class Request extends React.Component {
       },
       credentials: 'same-origin',
       body: JSON.stringify({
+        item: this.state.item,
         hour: this.state.hour,
         minutes: this.state.minutes,
         amorpm: this.state.amorpm
@@ -67,6 +75,10 @@ export default class Request extends React.Component {
           <h3>Please select your time</h3>
           <div className="timecontainer">
             <form>
+              <div className="timecontainer">
+                <label>Item: </label><br></br>
+                <input type="item" onChange={e => this.onitemChange(e)}></input>
+              </div>
               <div className="timecontainer">
                 <label>Hour: </label><br></br>
                 <input type="hour" onChange={e => this.onhourChange(e)}></input>

@@ -93,7 +93,9 @@ module.exports = function(passport) {
       models.Location.findOne({yourshopname: req.query.id}).then(location=>{
         models.User.findById(location.stations).then(async user=>{
           var newMessage = new Message({
+            user: req.user._id,
             messagefrom: req.user.username,
+            item: req.body.item,
             hour: req.body.hour,
             minutes: req.body.minutes,
             amorpm: req.body.amorpm

@@ -18,22 +18,24 @@ export default class MessagePage extends React.Component {
     })
     .then(res=> res.json())
     .then(res => {
-      console.log(res.messages)
+      console.log(res)
        this.setState({
         messages: res.messages
       })
     }).catch(err => console.log(err))
   }
 
+
+
+
   render() {
     const renderitems = this.state.messages.map((item, i)=> {
         return (
           <div key={i}>
-            <p>{item.messagefrom} will pick up your item at {item.hour}: {item.minutes} {item.amorpm}<button>Accept</button><button>Decline</button></p>
+            <p>{item.messagefrom} will pick up your {item.item} at {item.hour}: {item.minutes} {item.amorpm}<button>Accept</button><button>Decline</button></p>
           </div>
         )
       })
-
 
   return (
     <div className="postanitempage">

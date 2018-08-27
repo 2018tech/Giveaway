@@ -46,6 +46,7 @@ export default class Mainpage extends React.Component {
   };
 
   onRequest(e){
+    console.log(e)
     this.setState({currentPage: "Request"});
   }
 
