@@ -8,7 +8,8 @@ export default class PostanItem extends React.Component {
       name: "",
       description: "",
       value: 0,
-      items: []
+      items: [],
+      message: false
     };
   };
 
@@ -51,8 +52,7 @@ export default class PostanItem extends React.Component {
     .then(res => {
       switch(res.status) {
         case 200:
-        console.log(res);
-        console.log('User added: ', this.state.username);
+        this.setState({message: true})
         break;
         default:
         console.log(res.status);
@@ -84,6 +84,7 @@ export default class PostanItem extends React.Component {
             Value:
             <input type="value" onChange={e => this.onValuechange(e)}></input>
           <button type="submit" onClick={e => this.onPostanItem(e)} className="btn btn-default">Post</button>
+          {this.state.message ? <p className="message">Your Item has been posted! Refresh this page!</p>: null}
         </form>
         <br></br>
         <div className="titles"><p>All Items</p></div>

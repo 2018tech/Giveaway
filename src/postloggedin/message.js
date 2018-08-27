@@ -27,7 +27,6 @@ export default class MessagePage extends React.Component {
 
 
 
-
   render() {
     const renderitems = this.state.messages.map((item, i)=> {
         return (
