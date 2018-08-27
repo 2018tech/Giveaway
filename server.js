@@ -88,7 +88,19 @@ app.get('/collection', async function(req, res){
   const user = await User.findById(req.user._id).populate("items")
   var items = user.items
   res.send(items)
-})
+});
+
+// app.delete('/itemdelete/:id', function(req, res){
+//   var id = req.params.id;
+//   Item.findOneAndRemove({_id: id}, function(err){
+//     if (err){
+//        console.log(err);
+//        return res.status(500).send();
+//     }else{
+//       return res.status(200).send();
+//     }
+//   })
+// });
 
 // DO NOT REMOVE THIS LINE :)
 app.get('/', function (req, res) {

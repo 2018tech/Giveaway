@@ -35,6 +35,13 @@ export default class PostanItem extends React.Component {
     axios.get('/collection').then(res=> this.setState({ items: res.data}))
   };
 
+//item below is the id of the item
+  onDelete(item, e){
+    e.preventDefault();
+    console.log(item);
+    // axios.delete('/itemdelete?id=' + e).then(res=>console.log(res))
+  }
+
   onPostanItem(e) {
     e.preventDefault();
     fetch('/postitem', {
@@ -67,7 +74,7 @@ export default class PostanItem extends React.Component {
         return (
           <div key={i}>
             <p>
-        {i+1}. Name: {item.name}; Description: {item.description}; Value: {item.value}
+        {i+1}. Name: {item.name}; Description: {item.description}; Value: {item.value} <button onClick={(e)=> this.onDelete(item._id, e)}>{item._id}</button>
             </p>
           </div>
         )
@@ -84,7 +91,7 @@ export default class PostanItem extends React.Component {
             Value:
             <input type="value" onChange={e => this.onValuechange(e)}></input>
           <button type="submit" onClick={e => this.onPostanItem(e)} className="btn btn-default">Post</button>
-          {this.state.message ? <p className="message">Your Item has been posted! Refresh this page!</p>: null}
+          {this.state.message ? <p className="message">Your Item has been posted! Check it out on Home!</p>: null}
         </form>
         <br></br>
         <div className="titles"><p>All Items</p></div>

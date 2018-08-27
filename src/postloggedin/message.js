@@ -29,7 +29,7 @@ export default class MessagePage extends React.Component {
     const renderitems = this.state.messages.map((item, i)=> {
         return (
           <div key={i}>
-            <p>{item.messagefrom} will pick up your {item.item} at {item.hour}: {item.minutes} {item.amorpm}<button>Accept</button><button>Decline</button></p>
+            <p>{item.messagefrom} wants to pick up your {item.item} at {item.hour}: {item.minutes} {item.amorpm}</p>
           </div>
         )
       })
