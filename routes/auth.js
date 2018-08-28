@@ -110,6 +110,14 @@ module.exports = function(passport) {
       )
     });
 
+    router.delete('/messagedelete', (req, res) => {
+      var id = req.query.id;
+      console.log(id);
+      models.Message.findOneAndRemove({_id: id}).then(
+        res.send("success")
+      )
+    });
+
     router.get('/logout', function(req, res) {
       req.logout();
       res.json({sucess: true});
