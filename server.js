@@ -90,6 +90,17 @@ app.get('/collection', async function(req, res){
   res.send(items)
 });
 
+
+app.get('/currentUserMessage', async function(req, res){
+  if (!req.user){
+    throw 'error'
+  }else{
+    const mes = await User.findById(req.user._id)
+    console.log(mes)
+    res.send(mes)
+  }
+})
+
 // DO NOT REMOVE THIS LINE :)
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));

@@ -76,14 +76,14 @@ module.exports = function(passport) {
       }
     })
 
-    router.get('/currentUserMessage', (req, res) => {
-      if (!req.user){
-        throw 'error'
-      }else{
-        models.User.findById(req.user._id)
-        .then(user=> res.send(user))
-      }
-    })
+    // router.get('/currentUserMessage', (req, res) => {
+    //   if (!req.user){
+    //     throw 'error'
+    //   }else{
+    //     models.User.findById(req.user._id)
+    //     .then(user=> res.send(user))
+    //   }
+    // })
 
     router.post('/timesubmit', (req, res) => {
       models.Location.findOne({yourshopname: req.query.id}).then(location=>{

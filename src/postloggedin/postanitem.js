@@ -78,6 +78,7 @@ export default class PostanItem extends React.Component {
         )
       })
     }
+
     return (
       <div className="postanitempage">
         <form>
