@@ -72,8 +72,6 @@ export default class Register extends React.Component {
     .then(res => {
       switch(res.status) {
         case 200:
-        console.log(res);
-        console.log('User added: ', this.state.username);
         this.props.app.setState({currentPage: "Login"});
         break;
         default:

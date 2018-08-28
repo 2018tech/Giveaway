@@ -34,7 +34,6 @@ export default class LeftDrawer extends React.Component {
         this.props.redirect('Login')
         break
         default:
-        console.log(res.status)
       }
     }).catch(err => console.log(err))
   };

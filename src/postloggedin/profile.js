@@ -17,8 +17,6 @@ export default class Profile extends React.Component {
 
   onLocation(e) {
     e.preventDefault();
-    console.log(this.state)
-    console.log('enters onLocation');
     fetch('/location', {
       method: 'POST',
       headers: {

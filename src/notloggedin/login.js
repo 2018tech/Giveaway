@@ -38,13 +38,10 @@ export default class Login extends React.Component {
     .then(res => {
       switch(res.status) {
         case 200:
-        console.log(res);
-        console.log('User validated: ', this.state.username);
         this.props.setLogin(true)
         this.props.app.setState({currentPage: "Mainpage"})
         break;
         default:
-        console.log(res.status);
       }
     })
     .catch(err => console.log('Error ', err));

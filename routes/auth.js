@@ -32,8 +32,6 @@ module.exports = function(passport) {
   });
 
   router.post('/location', async function(req, res) {
-    console.log(req.user._id)
-    console.log(req.body)
     var geoconvert;
     await geocoder.geocode(`${req.body.street} ${req.body.city} ${req.body.state} ${req.body.zipcode}`,
       function(err, res) {
@@ -44,7 +42,6 @@ module.exports = function(passport) {
         })
       })
       geoconvert.save(function(err, user) {
-        console.log(user)
         if (err) {
           console.log(err);
           res.status(500).json({err: err.message});
@@ -52,7 +49,6 @@ module.exports = function(passport) {
         }else{
           models.User.findByIdAndUpdate(req.user._id, {locations: user._id})
           .then(function(){
-            console.log("ASLDKFJ");
             res.send({success: true})
           })
           .catch(err=> console.log(err))
@@ -106,6 +102,13 @@ module.exports = function(passport) {
         })
       })
     })
+
+    router.delete('/itemdelete', (req, res) => {
+      var id = req.query.id;
+      models.Item.findOneAndRemove({_id: id}).then(
+        res.send("success")
+      )
+    });
 
     router.get('/logout', function(req, res) {
       req.logout();

@@ -18,7 +18,6 @@ export default class MessagePage extends React.Component {
     })
     .then(res=> res.json())
     .then(res => {
-      console.log(res)
        this.setState({
         messages: res.messages
       })

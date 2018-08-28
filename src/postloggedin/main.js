@@ -28,7 +28,6 @@ export default class Mainpage extends React.Component {
   }
 
   markerClick(station) {
-    console.log(station)
     this.setState({
       region: {
         latitude: station.position[1],
@@ -46,7 +45,6 @@ export default class Mainpage extends React.Component {
   };
 
   onRequest(e){
-    console.log(e)
     this.setState({currentPage: "Request"});
   }
 

@@ -60,14 +60,12 @@ export default class Request extends React.Component {
         this.setState({message: true})
         break;
         default:
-        console.log(res.status);
       }
     })
     .catch(err => console.log('Error ', err));
   }
 
   render() {
-    {console.log(this.props.app.state.station)}
     return (
       <div className="timecontainer">
         <div className="row">
