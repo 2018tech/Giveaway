@@ -17,6 +17,12 @@ export default class MessagePage extends React.Component {
     axios.delete('/messagedelete?id=' + item)
   }
 
+  onClear(item, e){
+    e.preventDefault();
+    axios.delete('/requestclear?id=' + item._id)
+    console.log(item)
+  }
+
   onAccept(item, e){
     e.preventDefault();
     fetch('/onAccept?id=' + item.user, {
@@ -74,6 +80,7 @@ export default class MessagePage extends React.Component {
             <div>
               <p>
                 {item.accept}
+                <button onClick={(e)=> {this.onClear(item, e)}}>Clear</button>
               </p>
             </div>
           )

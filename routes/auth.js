@@ -46,7 +46,6 @@ module.exports = function(passport) {
       })
       geoconvert.save(function(err, user) {
         if (err) {
-          console.log(err);
           res.status(500).json({err: err.message});
           return;
         }else{
@@ -127,6 +126,13 @@ module.exports = function(passport) {
         res.send("success")
       )
     });
+
+    router.delete('/requestclear', (req, res) => {
+      var id = req.query.id;
+      models.Accept.findOneAndRemove({_id: id}).then(
+        res.send("success")
+      )
+    })
 
     router.get('/logout', function(req, res) {
       req.logout();

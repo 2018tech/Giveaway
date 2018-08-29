@@ -100,7 +100,6 @@ app.get('/currentUserMessage', async function(req, res){
 
 app.get('/acceptedRequests', async function(req, res){
   const user = await User.findById(req.user._id).populate("accept")
-  console.log(user)
   var accepts = user.accept
   res.send(accepts)
 })
