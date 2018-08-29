@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var NodeGeocoder = require('node-geocoder');
 var Message = models.Message;
+var Accept = models.Accept;
 
 var options = {
   provider: 'google'
@@ -22,14 +23,16 @@ module.exports = function(passport) {
     });
     u.save(function(err, user) {
       if (err) {
-        console.log(err);
         res.status(500).json({err: err.message});
         return;
       }
-      console.log(user);
       res.status(200).json({success: true});
     });
   });
+
+  router.post('/login', passport.authenticate('local'), (req, res) => {
+    res.send("User logged in");
+  })
 
   router.post('/location', async function(req, res) {
     var geoconvert;
@@ -56,35 +59,6 @@ module.exports = function(passport) {
       })
     })
 
-    router.get('/usershop', function(req, res){
-      models.User.find({}).populate('locations').populate('items')
-      .exec()
-      .then((loc) => res.json(loc))
-      .catch(err => console.log(err))
-    })
-
-    router.post('/login', passport.authenticate('local'), (req, res) => {
-      res.send("User logged in");
-    })
-
-    router.get('/currentUser', (req, res) => {
-      if (!req.user) {
-        throw 'error'
-      }else{
-        models.User.findById(req.user._id)
-        .then(user=>res.send(user))
-      }
-    })
-
-    // router.get('/currentUserMessage', (req, res) => {
-    //   if (!req.user){
-    //     throw 'error'
-    //   }else{
-    //     models.User.findById(req.user._id)
-    //     .then(user=> res.send(user))
-    //   }
-    // })
-
     router.post('/timesubmit', (req, res) => {
       models.Location.findOne({yourshopname: req.query.id}).then(location=>{
         models.User.findById(location.stations).then(async user=>{
@@ -103,6 +77,43 @@ module.exports = function(passport) {
       })
     })
 
+    router.post('/onAccept', (req, res)=> {
+      models.User.findById({_id: req.query.id}).then(async user=>{
+        var newAccept = new Accept({
+          accept: `${req.body.location} accepted your request! for ${req.body.item}!`
+        })
+        var acceptToPush = await newAccept.save();
+        user.accept.push(acceptToPush);
+        await user.save()
+      })
+      .catch(err=> console.log(err))
+    })
+
+    router.get('/usershop', function(req, res){
+      models.User.find({}).populate('locations').populate('items')
+      .exec()
+      .then((loc) => res.json(loc))
+      .catch(err => console.log(err))
+    })
+
+    router.get('/currentUser', (req, res) => {
+      if (!req.user) {
+        throw 'error'
+      }else{
+        models.User.findById(req.user._id).populate('locations')
+        .then(user=>res.send(user))
+      }
+    })
+
+    // router.get('/currentUserMessage', (req, res) => {
+    //   if (!req.user){
+    //     throw 'error'
+    //   }else{
+    //     models.User.findById(req.user._id)
+    //     .then(user=> res.send(user))
+    //   }
+    // })
+
     router.delete('/itemdelete', (req, res) => {
       var id = req.query.id;
       models.Item.findOneAndRemove({_id: id}).then(
@@ -112,7 +123,6 @@ module.exports = function(passport) {
 
     router.delete('/messagedelete', (req, res) => {
       var id = req.query.id;
-      console.log(id);
       models.Message.findOneAndRemove({_id: id}).then(
         res.send("success")
       )

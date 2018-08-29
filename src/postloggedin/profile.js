@@ -15,34 +15,6 @@ export default class Profile extends React.Component {
     };
   };
 
-  onLocation(e) {
-    e.preventDefault();
-    fetch('/location', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'same-origin',
-      body: JSON.stringify({
-        yourshopname: this.state.yourshopname,
-        street: this.state.street,
-        city: this.state.city,
-        state: this.state.state,
-        zipcode: this.state.zipcode
-      })
-    })
-    .then(res => {
-      switch(res.status) {
-        case 200:
-        this.setState({message: true})
-        break;
-        default:
-      }
-    })
-    .catch(err => console.log('Error ', err));
-  }
-
-
   onyourshopnameChange(e) {
     this.setState({
       yourshopname: e.target.value
@@ -73,6 +45,33 @@ export default class Profile extends React.Component {
     });
   };
 
+  onLocation(e) {
+    e.preventDefault();
+    fetch('/location', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        yourshopname: this.state.yourshopname,
+        street: this.state.street,
+        city: this.state.city,
+        state: this.state.state,
+        zipcode: this.state.zipcode
+      })
+    })
+    .then(res => {
+      switch(res.status) {
+        case 200:
+        this.setState({message: true})
+        break;
+        default:
+      }
+    })
+    .catch(err => console.log('Error ', err));
+  }
+
   componentDidMount(){
     fetch('/currentUser', {
       method: 'GET',
@@ -88,8 +87,6 @@ export default class Profile extends React.Component {
       })
     }).catch(err => console.log(err))
   }
-
-
 
   render() {
     return (

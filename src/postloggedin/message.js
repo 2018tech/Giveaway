@@ -5,71 +5,88 @@ export default class MessagePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: []
+      message: [],
+      state: '',
+      user: '',
+      accepted: []
     };
   };
 
   onDecline(item, e){
     e.preventDefault();
-    // console.log(item);
     axios.delete('/messagedelete?id=' + item)
   }
 
-//the person who wrote the message's id comes as "user". 그러면
-//use that id to find that person's accept schema then push into interval it;
-
   onAccept(item, e){
     e.preventDefault();
-    // console.log(item)
-  }
-
-
-  // componentDidMount(){
-  //   fetch('/currentUserMessage', {
-  //     method: 'GET',
-  //     credentials: 'same-origin',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //   .then(res=> res.json())
-  //   .then(res => {
-  //      this.setState({
-  //       messages: res.messages
-  //     })
-  //     console.log(this.state.messages)
-  //   }).catch(err => console.log(err))
-  // }
-componentDidMount(){
-  axios.get('/currentUserMessage').then(res=>
-    this.setState({ message: res.data}))
-};
-
-  render() {
-    const renderitems = () => {
-      return this.state.message.map((item, i)=> {
-        return (
-          <div key={i}>
-            {console.log(this.state.message)}
-            {/* {console.log(item)} */}
-            <p>
-              {item.messagefrom} wants to pick up your {item.item} at {item.hour}: {item.minutes} {item.amorpm}
-
-              <button onClick={(e)=> this.onAccept(item.user, e)}>Accept</button>
-              <button onClick={(e)=> this.onDecline(item._id, e)}>Decline</button>
-
-          </p>
-
-          </div>
-        )
+    fetch('/onAccept?id=' + item.user, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        item: item.item,
+        location: this.state.user.locations.yourshopname
       })
+    })
+    axios.delete('/messagedelete?id=' + item._id)
   }
-  return (
-    <div className="postanitempage">
-      <div className="titles"><p>Messages</p></div>
-      {renderitems()}
-      <div className="messagebelow"></div>
-    </div>
-  );
+
+  componentDidMount(){
+    fetch('/currentUser', {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res=> res.json())
+    .then(res => {
+      this.setState({
+        user: res
+      })
+    }).catch(err => console.log(err))
+
+    axios.get('/currentUserMessage').then(res=>
+      // console.log(res.data))}
+      this.setState({ message: res.data}))
+
+    axios.get('/acceptedRequests').then(res=>
+      // console.log(res.data))
+      this.setState({accepted: res.data}))
 }
-}
+    render() {
+      const renderitems = this.state.message.map((item, i)=> {
+          return (
+            <div key={i}>
+              <p>
+                {item.messagefrom} wants to pick up your {item.item} at {item.hour}: {item.minutes} {item.amorpm}
+                <button onClick={(e)=> this.onAccept(item, e)}>Accept</button>
+                <button onClick={(e)=> this.onDecline(item._id, e)}>Decline</button>
+              </p>
+            </div>
+          )
+        })
+
+      const renderAccepted = this.state.accepted.map((item, i)=> {
+          return (
+            <div>
+              <p>
+                {item.accept}
+              </p>
+            </div>
+          )
+        })
+
+      return (
+        <div className="postanitempage">
+          <div className="titles"><p>Messages</p></div>
+          {renderitems}
+          <div classNAME ="titles"><p>Accepted Requests</p></div>
+          {renderAccepted}
+          <div className="messagebelow"></div>
+        </div>
+      );
+    }
+  }

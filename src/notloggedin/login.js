@@ -60,33 +60,32 @@ export default class Login extends React.Component {
             <NavItem eventKey={2}  onSelect={()=>this.props.redirect('Firstpage')}>
               Home
             </NavItem>
-          <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
-            Register
-          </NavItem>
-          <NavItem eventKey={2} onSelect={()=>this.props.redirect('Login')}>
-            Login
-          </NavItem>
-        </Nav>
-      </Navbar>
-      <div className="lightgreen">
-      <div className="container" id="lightgreen">
-        <h2>Login</h2>
-        <form>
-          <div className="col-25">
-            <label>Email:</label><br></br>
-            <input type="email" onChange={e => this.onUsernameChange(e)}  ></input>
+            <NavItem eventKey={2} onSelect={()=>this.props.redirect('Register')}>
+              Register
+            </NavItem>
+            <NavItem eventKey={2} onSelect={()=>this.props.redirect('Login')}>
+              Login
+            </NavItem>
+          </Nav>
+        </Navbar>
+        <div className="lightgreen">
+          <div className="container" id="lightgreen">
+            <h2>Login</h2>
+            <form>
+              <div className="col-25">
+                <label>Email:</label><br></br>
+                <input type="email" onChange={e => this.onUsernameChange(e)}  ></input>
+              </div>
+              <div className="col-25">
+                <label>Password</label><br></br>
+                <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
+              </div>
+              <button type="submit" onClick={e => this.onLogin(e)} className="btn btn-default">Login</button>
+            </form>
           </div>
-          <div className="col-25">
-            <label>Password</label><br></br>
-            <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
-          </div>
-          <button type="submit" onClick={e => this.onLogin(e)} className="btn btn-default">Login</button>
-        </form>
+          <div className="loginbelow"></div>
+        </div>
       </div>
-      <div className="loginbelow"></div>
-    </div>
-
-    </div>
-  );
-}
+    );
+  }
 }

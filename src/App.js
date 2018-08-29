@@ -10,7 +10,6 @@ import Firstpage from './notloggedin/./firstpage.js';
 import Request from './postloggedin/./request.js';
 import MessagePage from './postloggedin/./message.js';
 
-
 export default class App extends React.Component {
 
   constructor(props) {
@@ -55,7 +54,6 @@ export default class App extends React.Component {
               {this.state.currentPage === 'Request' ? <Request redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'MessagePage' ? <MessagePage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
             </div>
-
           </MuiThemeProvider>
         </div>
       );

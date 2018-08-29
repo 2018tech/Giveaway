@@ -6,36 +6,12 @@ import Appbar from 'material-ui/AppBar';
 import { black } from 'material-ui/styles/colors';
 import { Home, Gift, Account, Message } from 'mdi-material-ui';
 
-
 export default class LeftDrawer extends React.Component {
   constructor(props) {
-          super(props)
-          this.state = {
-              drawerOpen: true
-          }
-      };
-
-      toggleDrawer(e) {
-          e.preventDefault()
-          this.setState({drawerOpen: !this.state.drawerOpen})
-      };
-
-  onLogout(e) {
-    fetch('/logout', {
-      method: 'GET',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => {
-      switch(res.status) {
-        case 200:
-        this.props.setLogin(false)
-        this.props.redirect('Login')
-        break
-        default:
-      }
-    }).catch(err => console.log(err))
+    super(props)
+    this.state = {
+      drawerOpen: true
+    }
   };
 
   onProfile(e) {
@@ -58,6 +34,28 @@ export default class LeftDrawer extends React.Component {
     this.props.redirect('MessagePage')
   }
 
+  toggleDrawer(e) {
+    e.preventDefault()
+    this.setState({drawerOpen: !this.state.drawerOpen})
+  };
+
+  onLogout(e) {
+    fetch('/logout', {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {
+      switch(res.status) {
+        case 200:
+        this.props.setLogin(false)
+        this.props.redirect('Login')
+        break
+        default:
+      }
+    }).catch(err => console.log(err))
+  };
   //for icons in this case, just use material-ui stuff. HTML things do not work.
   render() {
     const denseStyle = {
@@ -70,14 +68,14 @@ export default class LeftDrawer extends React.Component {
       <div>
         {this.props.loggedIn ?
           <div className="App">
-            <Appbar onLeftIconButtonClick={(e) => this.toggleDrawer(e)} style={{background: black}} />
+            <Appbar title="for Earth" onLeftIconButtonClick={(e) => this.toggleDrawer(e)} style={{background: black}} />
             <Drawer open={this.state.drawerOpen}>
-            <Appbar title="Giveaway" onLeftIconButtonClick={(e) => this.toggleDrawer(e)} style={{background: black}} />
-            <MenuItem  style={denseStyle} onClick={e=> this.onMain(e)}><Home />Home</MenuItem>
-            <MenuItem style={denseStyle} onClick={e=> this.onProfile(e)}><Account />Your Profile</MenuItem>
-            <MenuItem style={denseStyle} onClick={e=>this.onPostanItem(e)}><Gift />Your Items</MenuItem>
-            <MenuItem style={denseStyle} onClick={e=>this.onMessagePage(e)}><Message />Messages</MenuItem>
-            <RaisedButton style={{display: 'flex', alignItems: 'center'}} label='Logout' onMouseDown={e => this.onLogout(e)} primary={true} />
-          </Drawer></div> : null}
-        </div>
-      )}};
+              <Appbar title="Giveaway" onLeftIconButtonClick={(e) => this.toggleDrawer(e)} style={{background: black}} />
+              <MenuItem  style={denseStyle} onClick={e=> this.onMain(e)}><Home />Home</MenuItem>
+              <MenuItem style={denseStyle} onClick={e=> this.onProfile(e)}><Account />Your Profile</MenuItem>
+              <MenuItem style={denseStyle} onClick={e=>this.onPostanItem(e)}><Gift />Your Items</MenuItem>
+              <MenuItem style={denseStyle} onClick={e=>this.onMessagePage(e)}><Message />Messages</MenuItem>
+              <RaisedButton style={{display: 'flex', alignItems: 'center'}} label='Logout' onMouseDown={e => this.onLogout(e)} primary={true} />
+            </Drawer></div> : null}
+          </div>
+        )}};

@@ -18,6 +18,7 @@ var User = require('./models/models').User;
 var Item = require('./models/models').Item;
 var Location = require('./models/models').Location;
 var Message = require('./models/models').Message;
+var Accept = require('./models/models').Accept;
 
 const app = express();
 app.use(logger('dev'));
@@ -95,6 +96,13 @@ app.get('/currentUserMessage', async function(req, res){
   const user = await User.findById(req.user._id).populate("messages")
   var messages = user.messages
   res.send(messages)
+});
+
+app.get('/acceptedRequests', async function(req, res){
+  const user = await User.findById(req.user._id).populate("accept")
+  console.log(user)
+  var accepts = user.accept
+  res.send(accepts)
 })
 
 // DO NOT REMOVE THIS LINE :)

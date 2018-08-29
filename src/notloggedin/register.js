@@ -105,7 +105,7 @@ export default class Register extends React.Component {
           </Navbar>
         </div>
         <div className="lightgreen">
-        <div className="container" id="lightgreen">
+          <div className="container" id="lightgreen">
             <h2 >Register</h2>
             <div>
               <form>
@@ -132,10 +132,10 @@ export default class Register extends React.Component {
                 <button type="submit" onClick={e => this.onRegister(e)} className="btn btn-default">Register</button>
               </form>
             </div>
+          </div>
+          <div className="registerbelow"></div>
         </div>
-        <div className="registerbelow"></div>
       </div>
-    </div>
     );
   }
 }

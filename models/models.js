@@ -17,8 +17,8 @@ var userSchema = new mongoose.Schema({
   password: String,
   items: [{type: mongoose.Schema.ObjectId, ref: 'Item'}],
   locations: {type: mongoose.Schema.ObjectId, ref: 'Location'},
-  messages: [{type: mongoose.Schema.ObjectId, ref: 'Message'}]
-  // accept: [acceptSchema]
+  messages: [{type: mongoose.Schema.ObjectId, ref: 'Message'}],
+  accept: [{type: String, ref: 'Accept'}]
 });
 
 var itemSchema = new mongoose.Schema({
@@ -33,14 +33,14 @@ var locationSchema = new mongoose.Schema({
   yourshopname: {type: String, unique: true}
   });
 
-// var acceptSchema = new mongoose.Schema({
-//   accept: String
-// })
+var acceptSchema = new mongoose.Schema({
+  accept: String
+});
 
   module.exports = {
     User: mongoose.model('User', userSchema),
     Item: mongoose.model('Item', itemSchema),
     Location: mongoose.model('Location', locationSchema),
-    Message: mongoose.model('Message', messageSchema)
-    // Accept: mongoose.model('Accept', acceptSchema)
+    Message: mongoose.model('Message', messageSchema),
+    Accept: mongoose.model('Accept', acceptSchema)
   };

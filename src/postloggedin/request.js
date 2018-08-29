@@ -8,7 +8,7 @@ export default class Request extends React.Component {
       minutes: 0,
       amorpm: '',
       item: ''
-        };
+    };
   };
 
   onhourChange(e) {
@@ -96,6 +96,6 @@ export default class Request extends React.Component {
           </div>
         </div>
       </div>
-  );
-}
+    );
+  }
 }

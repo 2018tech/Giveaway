@@ -27,6 +27,16 @@ export default class Mainpage extends React.Component {
     this.setState({currentPage: page, options: options})
   }
 
+  onCancel(e) {
+    this.setState({
+      showPopup: false
+    });
+  };
+
+  onRequest(e){
+    this.setState({currentPage: "Request"});
+  }
+
   markerClick(station) {
     this.setState({
       region: {
@@ -36,16 +46,6 @@ export default class Mainpage extends React.Component {
       station: station,
       showPopup: true
     })
-  }
-
-  onCancel(e) {
-    this.setState({
-      showPopup: false
-    });
-  };
-
-  onRequest(e){
-    this.setState({currentPage: "Request"});
   }
 
   componentDidMount() {
