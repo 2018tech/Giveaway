@@ -33,7 +33,9 @@ export default class PostanItem extends React.Component {
 
   onDelete(item, e){
     e.preventDefault();
-    axios.delete('/itemdelete?id=' + item)
+    axios.delete('/itemdelete?id=' + item).then(
+      axios.get('/collection').then(res=> this.setState({ items: res.data}))
+    )
   }
 
   onPostanItem(e) {
@@ -54,6 +56,7 @@ export default class PostanItem extends React.Component {
       switch(res.status) {
         case 200:
         this.setState({message: true})
+        axios.get('/collection').then(res=> this.setState({ items: res.data}))
         break;
         default:
         console.log(res.status);
