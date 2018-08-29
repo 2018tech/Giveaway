@@ -5,16 +5,24 @@ export default class MessagePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: []
+      message: []
     };
   };
 
-//delete button deletes items in the database, but it does not render properly. something weird going on with get Request FORSURE
   onDecline(item, e){
     e.preventDefault();
-    console.log(item);
+    // console.log(item);
     axios.delete('/messagedelete?id=' + item)
   }
+
+//the person who wrote the message's id comes as "user". 그러면
+//use that id to find that person's accept schema then push into interval it;
+
+  onAccept(item, e){
+    e.preventDefault();
+    // console.log(item)
+  }
+
 
   // componentDidMount(){
   //   fetch('/currentUserMessage', {
@@ -34,15 +42,24 @@ export default class MessagePage extends React.Component {
   // }
 componentDidMount(){
   axios.get('/currentUserMessage').then(res=>
-    this.setState({ messages: res.data.messages}))
+    this.setState({ message: res.data}))
 };
 
   render() {
     const renderitems = () => {
-      return this.state.messages.map((item, i)=> {
+      return this.state.message.map((item, i)=> {
         return (
           <div key={i}>
-            <p>{item.messagefrom} wants to pick up your {item.item} at {item.hour}: {item.minutes} {item.amorpm}<button onClick={(e)=> this.onDecline(item._id, e)}>Decline</button></p>
+            {console.log(this.state.message)}
+            {/* {console.log(item)} */}
+            <p>
+              {item.messagefrom} wants to pick up your {item.item} at {item.hour}: {item.minutes} {item.amorpm}
+
+              <button onClick={(e)=> this.onAccept(item.user, e)}>Accept</button>
+              <button onClick={(e)=> this.onDecline(item._id, e)}>Decline</button>
+
+          </p>
+
           </div>
         )
       })

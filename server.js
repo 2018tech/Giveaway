@@ -92,13 +92,9 @@ app.get('/collection', async function(req, res){
 
 
 app.get('/currentUserMessage', async function(req, res){
-  if (!req.user){
-    throw 'error'
-  }else{
-    const mes = await User.findById(req.user._id)
-    console.log(mes)
-    res.send(mes)
-  }
+  const user = await User.findById(req.user._id).populate("messages")
+  var messages = user.messages
+  res.send(messages)
 })
 
 // DO NOT REMOVE THIS LINE :)
