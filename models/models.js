@@ -18,7 +18,7 @@ var userSchema = new mongoose.Schema({
   items: [{type: mongoose.Schema.ObjectId, ref: 'Item'}],
   locations: {type: mongoose.Schema.ObjectId, ref: 'Location'},
   messages: [{type: mongoose.Schema.ObjectId, ref: 'Message'}],
-  accept: [{type: String, ref: 'Accept'}]
+  accepts: [{type: mongoose.Schema.ObjectId, ref: 'Accept'}]
 });
 
 var itemSchema = new mongoose.Schema({
@@ -34,7 +34,7 @@ var locationSchema = new mongoose.Schema({
   });
 
 var acceptSchema = new mongoose.Schema({
-  accept: String
+  accepts: String
 });
 
   module.exports = {

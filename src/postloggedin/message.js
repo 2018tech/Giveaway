@@ -79,7 +79,7 @@ export default class MessagePage extends React.Component {
           return (
             <div>
               <p>
-                {item.accept}
+                {item.accepts}
                 <button onClick={(e)=> {this.onClear(item, e)}}>Clear</button>
               </p>
             </div>

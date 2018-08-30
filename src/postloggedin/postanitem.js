@@ -32,8 +32,10 @@ export default class PostanItem extends React.Component {
   }
 
   onDelete(item, e){
+    console.log(item)
+    console.log(item._id)
     e.preventDefault();
-    axios.delete('/itemdelete?id=' + item).then(
+    axios.delete('/itemdelete?id=' + item._id).then(
       axios.get('/collection').then(res=> this.setState({ items: res.data}))
     )
   }
@@ -74,7 +76,7 @@ export default class PostanItem extends React.Component {
         return (
           <div key={i}>
             <p>
-              {i+1}. Name: {item.name}; Description: {item.description}; Value: {item.value} <button onClick={(e)=> this.onDelete(item._id, e)}>Delete</button>
+              {i+1}. Name: {item.name}; Description: {item.description}; Value: {item.value} <button onClick={(e)=> this.onDelete(item, e)}>Delete</button>
             </p>
           </div>
         )

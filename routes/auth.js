@@ -79,11 +79,11 @@ module.exports = function(passport) {
     router.post('/onAccept', (req, res)=> {
       models.User.findById({_id: req.query.id}).then(async user=>{
         var newAccept = new Accept({
-          accept: `${req.body.location} accepted your request! for ${req.body.item}!`
+          accepts: `${req.body.location} accepted your request! for ${req.body.item}!`
         })
         var acceptToPush = await newAccept.save();
-        user.accept.push(acceptToPush);
-        await user.save()
+        user.accepts.push(acceptToPush);
+        await user.save();
       })
       .catch(err=> console.log(err))
     })
