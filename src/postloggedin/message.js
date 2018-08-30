@@ -14,13 +14,18 @@ export default class MessagePage extends React.Component {
 
   onDecline(item, e){
     e.preventDefault();
-    axios.delete('/messagedelete?id=' + item)
+    axios.delete('/messagedelete?id=' + item).then(
+      axios.get('/currentUserMessage').then(res=>
+        this.setState({ message: res.data}))
+    )
   }
 
   onClear(item, e){
     e.preventDefault();
-    axios.delete('/requestclear?id=' + item._id)
-    console.log(item)
+    axios.delete('/requestclear?id=' + item._id).then(
+      axios.get('/acceptedRequests').then(res=>
+        this.setState({accepted: res.data}))
+    )
   }
 
   onAccept(item, e){
@@ -35,8 +40,9 @@ export default class MessagePage extends React.Component {
         item: item.item,
         location: this.state.user.locations.yourshopname
       })
-    })
-    axios.delete('/messagedelete?id=' + item._id)
+    }).then(axios.delete('/messagedelete?id=' + item._id))
+    .then(axios.get('/currentUserMessage').then(res=>
+        this.setState({ message: res.data})))
   }
 
   componentDidMount(){

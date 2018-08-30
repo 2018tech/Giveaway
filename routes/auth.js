@@ -41,7 +41,7 @@ module.exports = function(passport) {
         geoconvert = new models.Location({
           stations: `${req.user._id}`,
           position: [res[0].longitude, res[0].latitude],
-          yourshopname: `${req.body.yourshopname}`,
+          yourshopname: `${req.body.yourshopname}`
         })
       })
       geoconvert.save(function(err, user) {

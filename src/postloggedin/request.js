@@ -7,7 +7,8 @@ export default class Request extends React.Component {
       hour: 0,
       minutes: 0,
       amorpm: '',
-      item: ''
+      item: '',
+      message: false
     };
   };
 
@@ -92,6 +93,7 @@ export default class Request extends React.Component {
               <br></br>
               <button type="submit" onClick={e => this.ontimeSubmit(e)} className="btn btn-default">Submit</button>
               <button type="gobacktomaps" onClick={e => this.ongobacktoMaps(e)} className="btn btn-default">Go Back To Maps</button>
+              <div className="titles">{this.state.message ? <p className="message">Your request has been sent!</p>: null}</div>
             </form>
           </div>
         </div>

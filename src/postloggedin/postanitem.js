@@ -32,8 +32,6 @@ export default class PostanItem extends React.Component {
   }
 
   onDelete(item, e){
-    console.log(item)
-    console.log(item._id)
     e.preventDefault();
     axios.delete('/itemdelete?id=' + item._id).then(
       axios.get('/collection').then(res=> this.setState({ items: res.data}))
