@@ -1,11 +1,11 @@
 .navbar-default .navbar-nav > li > a {
-  color:  black;
+  color:  white;
   font-family: Helvetica;
   font-size: 25px;
 }
 
 .navbar-default {
-  background-color: #FFAAA3;
+  background-color: 	#282828;
   background-image: none;
   background-repeat: no-repeat;
  }
