@@ -86,10 +86,14 @@ export default class Profile extends React.Component {
         user: res
       })
     }).catch(err => console.log(err))
+
+    // axios.get('/')
+
   }
 
   render() {
     return (
+
       <div className="postanitempage">
         <div className="titles"><p>Welcome, {this.state.user.firstname}! To giveaway your stuff, please enter your address!</p></div>
         <label>Dorm & Room: </label><br></br>
@@ -115,6 +119,7 @@ export default class Profile extends React.Component {
         </div>
         {this.state.message ? <p className="message">Your Location has been added! To edit, simply re-enter your address.</p>: null}
         <div className="registerbelow"></div>
+        {console.log(this.state.user)}
       </div>
     );
   }

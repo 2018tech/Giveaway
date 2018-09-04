@@ -7,7 +7,6 @@ export default class PostanItem extends React.Component {
     this.state = {
       name: "",
       description: "",
-      value: 0,
       items: [],
       message: false
     };
@@ -22,12 +21,6 @@ export default class PostanItem extends React.Component {
   onDescriptionchange(e){
     this.setState({
       description: e.target.value
-    })
-  }
-
-  onValuechange(e){
-    this.setState({
-      value: e.target.value
     })
   }
 
@@ -48,8 +41,7 @@ export default class PostanItem extends React.Component {
       credentials: 'same-origin',
       body: JSON.stringify({
         name: this.state.name,
-        description: this.state.description,
-        value: this.state.value
+        description: this.state.description
       })
     })
     .then(res => {
@@ -74,7 +66,7 @@ export default class PostanItem extends React.Component {
         return (
           <div key={i}>
             <p>
-              {i+1}. Name: {item.name}; Description: {item.description}; Value: {item.value} <button onClick={(e)=> this.onDelete(item, e)}>Delete</button>
+              {i+1}. Name: {item.name}; Description: {item.description} <button onClick={(e)=> this.onDelete(item, e)}>Delete</button>
             </p>
           </div>
         )
@@ -88,8 +80,6 @@ export default class PostanItem extends React.Component {
           <input type="name" onChange={e => this.onNamechange(e)}></input>
           Description:
           <input type="description" onChange={e => this.onDescriptionchange(e)}></input>
-          Value:
-          <input type="value" onChange={e => this.onValuechange(e)}></input>
           <button type="submit" onClick={e => this.onPostanItem(e)} className="btn btn-default">Post</button>
           {this.state.message ? <p className="message">Your Item has been posted! Check it out on Home!</p>: null}
         </form>

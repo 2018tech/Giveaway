@@ -76,9 +76,8 @@ app.post('/postitem', async function(req, res){
   const user = await User.findById(req.user._id)
   var newitem = new Item({
     name: req.body.name,
-    description: req.body.description,
-    value: req.body.value
-  })
+    description: req.body.description
+    })
   var item = await newitem.save()
   user.items.push(item)
   const saveduser = await user.save()

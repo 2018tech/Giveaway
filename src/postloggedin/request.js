@@ -71,18 +71,19 @@ export default class Request extends React.Component {
       <div className="timecontainer">
         <div className="row">
           <h2>You are almost there!</h2>
-          <h3>Please select your time</h3>
           <div className="timecontainer">
             <form>
+              <br></br>
+              <h4>Which Item?</h4>
               <div className="timecontainer">
                 <label>Item: </label><br></br>
                 <input type="item" onChange={e => this.onitemChange(e)}></input>
               </div>
-              <br></br><br></br>
+              <h4>Select Your Time</h4>
               <div className="timecontainer">
-                <label>Select Hour:
+                <label>Select Hour<p></p>
                   <select onChange={e => this.onhourChange(e)}>
-                    <option value="0">Select Hour:</option>
+                    <option value="0">Hour:</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -96,10 +97,11 @@ export default class Request extends React.Component {
                     <option value="11">11</option>
                     <option value="12">12</option>
                   </select>
-                </label><br></br>
-              </div>
-              <div className="timecontainer">
-                <label>Select Minutes:
+                </label>
+                {/* <br></br> */}
+              {/* </div> */}
+              {/* <div className="timecontainer"> */}
+                <label>Select Minutes<p></p>
                   <select onChange={e => this.onminutesChange(e)}>
                     <option value="0">Minutes:</option>
                     <option value="1">1</option>
@@ -162,16 +164,18 @@ export default class Request extends React.Component {
                     <option value="58">58</option>
                     <option value="59">59</option>
                   </select>
-                </label><br></br>
-              </div>
-              <div className="timecontainer">
-                <label>AM/PM:
+                </label>
+                {/* <br></br> */}
+              {/* </div> */}
+              {/* <div className="timecontainer"> */}
+                <label>AM/PM<p></p>
                   <select onChange={e => this.onamorpmChange(e)}>
                     <option value="none">AM/PM</option>
                     <option value="AM">AM</option>
                     <option value="PM">PM</option>
                   </select>
-                </label><br></br>
+                </label>
+                {/* <br></br> */}
               </div>
               <br></br>
               <button type="submit" onClick={e => this.ontimeSubmit(e)} className="btn btn-default">Submit</button>
