@@ -96,7 +96,7 @@ export default class MessagePage extends React.Component {
         <div className="postanitempage">
           <div className="titles"><p>Messages</p></div>
           {renderitems}
-          <div classNAME ="titles"><p>Accepted Requests</p></div>
+          <div className ="titles"><p>Accepted Requests</p></div>
           {renderAccepted}
           <div className="messagebelow"></div>
         </div>
