@@ -43,6 +43,8 @@ export default class Login extends React.Component {
         this.props.setLogin(true)
         this.props.app.setState({currentPage: "Profile"})
         break;
+        case 401:
+        alert("There was a problem with your login")
         default:
       }
     })
