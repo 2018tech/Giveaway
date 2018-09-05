@@ -93,6 +93,7 @@ export default class MessagePage extends React.Component {
       return (
         <div className="postanitempage">
           <div className="titles"><p>Messages</p></div>
+          <h5>**Once you accept the request, please go to "Your Items" and delete respective item! I will fix the technical issue soon :)** </h5>
           {renderitems}
           <div className ="titles"><p>Accepted Requests</p></div>
           {renderAccepted}
