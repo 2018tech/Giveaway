@@ -30,7 +30,7 @@ export default class MessagePage extends React.Component {
 
   onAccept(item, e){
     e.preventDefault();
-    fetch('/onAccept?id=' + item.user, {
+    fetch('/onAccept?id=' + item.user,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

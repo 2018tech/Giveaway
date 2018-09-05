@@ -1,5 +1,7 @@
 import React from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import Button from '@material-ui/core/Button';
+
 
 export default class Login extends React.Component {
   constructor (props) {
@@ -39,7 +41,7 @@ export default class Login extends React.Component {
       switch(res.status) {
         case 200:
         this.props.setLogin(true)
-        this.props.app.setState({currentPage: "Mainpage"})
+        this.props.app.setState({currentPage: "Profile"})
         break;
         default:
       }
@@ -81,6 +83,7 @@ export default class Login extends React.Component {
                 <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
               </div><br></br>
               <button type="submit" onClick={e => this.onLogin(e)} className="btn btn-default">Login</button>
+              {/* <Button variant="contained" color="secondary" onClick={e => this.onLogin(e)}>Login </Button> */}
             </form>
           </div>
           <div className="loginbelow"></div>
