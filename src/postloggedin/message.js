@@ -61,11 +61,9 @@ export default class MessagePage extends React.Component {
     }).catch(err => console.log(err))
 
     axios.get('/currentUserMessage').then(res=>
-      // console.log(res.data))}
       this.setState({ message: res.data}))
 
     axios.get('/acceptedRequests').then(res=>
-      // console.log(res.data))
       this.setState({accepted: res.data}))
 }
     render() {
@@ -73,7 +71,7 @@ export default class MessagePage extends React.Component {
           return (
             <div key={i}>
               <p>
-                {item.messagefrom} wants to pick up your {item.item} at {item.hour}: {item.minutes} {item.amorpm}
+                {item.messagefrom} wants to pick up your {item.item}. On this date: {item.month}/{item.date}. At this time: {item.hour}: {item.minutes} {item.amorpm}
                 <button onClick={(e)=> this.onAccept(item, e)}>Accept</button>
                 <button onClick={(e)=> this.onDecline(item._id, e)}>Decline</button>
               </p>

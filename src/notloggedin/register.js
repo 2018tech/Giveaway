@@ -50,7 +50,7 @@ export default class Register extends React.Component {
       alert("Forgot to put your firstname!")
     }else if(this.state.lastname ===''){
       alert("Forgot to put your lastname!")
-    }  else if(this.state.password.length <= 5){
+    }else if(this.state.password.length <= 5){
       alert("Your password needs to be at least 6 characters")
     }else if(this.state.password !== this.state.passwordconfirm){
       alert('Passwords did not match')
@@ -74,6 +74,8 @@ export default class Register extends React.Component {
         case 200:
         this.props.app.setState({currentPage: "Login"});
         break;
+        case 500:
+        alert("Username already exists")
         default:
         console.log(res.status);
       }
@@ -118,7 +120,7 @@ export default class Register extends React.Component {
                   <input type="lastname" onChange={e => this.onLnameChange(e)}></input>
                 </div>
                 <div className="col-25">
-                  <label>Email: </label><br></br>
+                  <label>Username: </label><br></br>
                   <input type="email" onChange={e => this.onUsernameChange(e)}></input>
                 </div>
                 <div className="col-75">

@@ -67,7 +67,9 @@ module.exports = function(passport) {
             item: req.body.item,
             hour: req.body.hour,
             minutes: req.body.minutes,
-            amorpm: req.body.amorpm
+            amorpm: req.body.amorpm,
+            month: req.body.month,
+            date: req.body.date
           })
           var messageToPush = await newMessage.save();
           user.messages.push(messageToPush);
@@ -79,7 +81,7 @@ module.exports = function(passport) {
     router.post('/onAccept', (req, res)=> {
       models.User.findById({_id: req.query.id}).then(async user=>{
         var newAccept = new Accept({
-          accepts: `${req.body.location} accepted your request! for ${req.body.item}!`
+          accepts: `Your request was accepted! Pick up ${req.body.item} from ${req.body.location}.`
         })
         var acceptToPush = await newAccept.save();
         user.accepts.push(acceptToPush);

@@ -7,7 +7,9 @@ var messageSchema = new mongoose.Schema({
   messagefrom: String,
   hour: Number,
   minutes: Number,
-  amorpm: String
+  amorpm: String,
+  month: String,
+  date: Number
 });
 
 var userSchema = new mongoose.Schema({

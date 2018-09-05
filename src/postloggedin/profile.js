@@ -119,7 +119,6 @@ export default class Profile extends React.Component {
         </div>
         {this.state.message ? <p className="message">Your Location has been added! To edit, simply re-enter your address.</p>: null}
         <div className="registerbelow"></div>
-        {console.log(this.state.user)}
       </div>
     );
   }
