@@ -103,6 +103,8 @@ app.get('/acceptedRequests', async function(req, res){
 
 // DO NOT REMOVE THIS LINE :)
 app.get('/', function (req, res) {
+  var port = server.address().port;
+
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
