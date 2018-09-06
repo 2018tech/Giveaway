@@ -37,6 +37,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "nodemon": "^1.18.3"
+    "nodemon": "^1.17.5"
   }
 }

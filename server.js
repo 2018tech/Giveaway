@@ -105,7 +105,7 @@ app.get('/acceptedRequests', async function(req, res){
 app.get('/', function (req, res) {
   var port = server.address().port;
 
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  // res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(process.env.PORT || 1337);
