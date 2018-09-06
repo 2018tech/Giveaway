@@ -37,9 +37,9 @@
     "eject": "react-scripts eject"
   },
   "engines": {
-     "node": "8.11.2",
-     "npm": "6.2.0"
- },
+    "node": "8.11.2",
+    "npm": "6.2.0"
+  },
   "devDependencies": {
     "nodemon": "^1.17.5"
   }

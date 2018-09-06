@@ -31,6 +31,9 @@ export default class App extends React.Component {
     */
     this.setState({currentPage: page, options: options})
   }
+
+  
+
   setLogin(b) {
     this.setState({loggedIn: b})
   };
@@ -47,11 +50,11 @@ export default class App extends React.Component {
             <LeftDrawer redirect={this.redirect} toggle={e => this.toggleDrawer(e)} setLogin={this.setLogin} loggedIn={this.state.loggedIn} />
               {this.state.currentPage === 'Register' ? <Register redirect={this.redirect} app={this}/> : null}
               {this.state.currentPage === 'Login' ? <Login redirect={this.redirect} app={this} setLogin={this.setLogin} /> : null}
-              {this.state.currentPage === 'Mainpage' ? <Mainpage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
+              {this.state.currentPage === 'Mainpage' ? <Mainpage redirect={this.redirect} setLogin={this.setLogin} app={this} options={this.state.options}/>: null}
               {this.state.currentPage === 'Profile' ? <Profile redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'PostanItem' ? <PostanItem redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Firstpage' ? <Firstpage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
-              {this.state.currentPage === 'Request' ? <Request redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
+              {this.state.currentPage === 'Request' ? <Request redirect={this.redirect} setLogin={this.setLogin} app={this} options={this.state.options}/>: null}
               {this.state.currentPage === 'MessagePage' ? <MessagePage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
             </div>
           </MuiThemeProvider>

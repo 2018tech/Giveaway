@@ -1,7 +1,5 @@
 import React from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
-import Button from '@material-ui/core/Button';
-
 
 export default class Login extends React.Component {
   constructor (props) {
@@ -45,6 +43,7 @@ export default class Login extends React.Component {
         break;
         case 401:
         alert("There was a problem with your login")
+        break;
         default:
       }
     })

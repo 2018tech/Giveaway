@@ -10,8 +10,9 @@ export default class Request extends React.Component {
       item: '',
       month: '',
       date: 0,
-      message: false
-    };
+      message: false,
+      itemclick: props.options.eachitem
+        };
   };
 
   onhourChange(e) {
@@ -83,6 +84,7 @@ export default class Request extends React.Component {
   }
 
   render() {
+    {console.log(this.state.itemclick)}
     return (
       <div className="timecontainer">
         <div className="row">
