@@ -33,11 +33,13 @@ export default class Mainpage extends React.Component {
     });
   };
 
-  // onRequest(e, i){
+  onRequest(e, item){
   //   console.log(i)
   //   this.setState({currentPage: "Request", options: i});
   //   console.log(this.props.options)
-  // }
+  this.props.app.redirect("Request", {eachitem: item})
+
+  }
 
   markerClick(station) {
     this.setState({
@@ -116,7 +118,7 @@ render() {
                     Welcome to {this.state.station.yourshopname}
                     <div className="item">
                       {this.state.station["items"].map(item=> <p>Name: {[item["name"]]}<br></br> Description: {item[["description"]]}
-                          <button onClick={e=> this.props.app.redirect("Request", {eachitem: item})}>Request</button>
+                          <button onClick={e=> this.onRequest(e, item)}>Request</button>
                           <button onClick={e => this.onCancel(e)}>Cancel</button> </p>)}
                     </div>
                     <div id="item">
