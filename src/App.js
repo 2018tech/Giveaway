@@ -22,7 +22,7 @@ export default class App extends React.Component {
     this.setLogin = this.setLogin.bind(this)
     this.redirect = this.redirect.bind(this)
     this.handleClickAway = this.handleClickAway.bind(this)
-
+    // this.eachitem = this.eachitem.bind(this)
   };
   //page is like 'Home'
   redirect(page, options) {
@@ -32,7 +32,9 @@ export default class App extends React.Component {
     this.setState({currentPage: page, options: options})
   }
 
-  
+  eachitem(options){
+    this.setState({options : options})
+  }
 
   setLogin(b) {
     this.setState({loggedIn: b})
@@ -50,7 +52,7 @@ export default class App extends React.Component {
             <LeftDrawer redirect={this.redirect} toggle={e => this.toggleDrawer(e)} setLogin={this.setLogin} loggedIn={this.state.loggedIn} />
               {this.state.currentPage === 'Register' ? <Register redirect={this.redirect} app={this}/> : null}
               {this.state.currentPage === 'Login' ? <Login redirect={this.redirect} app={this} setLogin={this.setLogin} /> : null}
-              {this.state.currentPage === 'Mainpage' ? <Mainpage redirect={this.redirect} setLogin={this.setLogin} app={this} options={this.state.options}/>: null}
+              {this.state.currentPage === 'Mainpage' ? <Mainpage redirect={this.redirect} eachitem = {this.eachitem} setLogin={this.setLogin} app={this} options={this.state.options}/>: null}
               {this.state.currentPage === 'Profile' ? <Profile redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'PostanItem' ? <PostanItem redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}
               {this.state.currentPage === 'Firstpage' ? <Firstpage redirect={this.redirect} setLogin={this.setLogin} app={this}/>: null}

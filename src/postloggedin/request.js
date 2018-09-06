@@ -10,8 +10,8 @@ export default class Request extends React.Component {
       item: '',
       month: '',
       date: 0,
-      message: false,
-      itemclick: props.options.eachitem
+      message: false
+      // itemclick: props.options.eachitem
         };
   };
 
@@ -84,7 +84,7 @@ export default class Request extends React.Component {
   }
 
   render() {
-    {console.log(this.state.itemclick)}
+    // {console.log(this.state.itemclick)}
     return (
       <div className="timecontainer">
         <div className="row">

@@ -21,6 +21,7 @@ export default class Mainpage extends React.Component {
       currentPage: "MainPage"
     }
     this.redirect = this.redirect.bind(this);
+    // this.onRequest = this.onRequest.bind(this);
   }
 
   redirect(page, options) {
@@ -34,11 +35,9 @@ export default class Mainpage extends React.Component {
   };
 
   onRequest(e, item){
-  //   console.log(i)
-  //   this.setState({currentPage: "Request", options: i});
-  //   console.log(this.props.options)
-  this.props.app.redirect("Request", {eachitem: item})
-
+  // this.props.app.eachitem({eachitem: item})
+  // this.props.app.redirect("Mainpage")
+  this.setState({currentPage: "Request"})
   }
 
   markerClick(station) {
@@ -117,9 +116,9 @@ render() {
                   <div className="shopname">
                     Welcome to {this.state.station.yourshopname}
                     <div className="item">
-                      {this.state.station["items"].map(item=> <p>Name: {[item["name"]]}<br></br> Description: {item[["description"]]}
-                          <button onClick={e=> this.onRequest(e, item)}>Request</button>
-                          <button onClick={e => this.onCancel(e)}>Cancel</button> </p>)}
+                      {this.state.station["items"].map(item=> <p>Name: {[item["name"]]}<br></br> Description: {item[["description"]]}</p>)}
+                          <button onClick={e=> this.onRequest(e)}>Request</button>
+                          <button onClick={e => this.onCancel(e)}>Cancel</button>
                     </div>
                     <div id="item">
                     </div>
