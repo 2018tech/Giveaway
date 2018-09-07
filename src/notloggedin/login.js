@@ -76,7 +76,7 @@ export default class Login extends React.Component {
             <h2>Login</h2>
             <form>
               <div className="col-25">
-                <label>Email:</label><br></br>
+                <label>Username:</label><br></br>
                 <input type="email" onChange={e => this.onUsernameChange(e)}  ></input>
               </div>
               <div className="col-25">
