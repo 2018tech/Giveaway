@@ -112,23 +112,23 @@ export default class Register extends React.Component {
             <div>
               <form>
                 <div className="col-25">
-                  <label>First name: </label><br></br>
+                  <label>First name</label><br></br>
                   <input type="firstname" onChange={e => this.onFnameChange(e)}></input>
                 </div>
                 <div className="col-25">
-                  <label>Last name: </label><br></br>
+                  <label>Last name</label><br></br>
                   <input type="lastname" onChange={e => this.onLnameChange(e)}></input>
                 </div>
                 <div className="col-25">
-                  <label>Username: </label><br></br>
+                  <label>Username</label><br></br>
                   <input type="email" onChange={e => this.onUsernameChange(e)}></input>
                 </div>
                 <div className="col-75">
-                  <label>Password: </label><br></br>
+                  <label>Password</label><br></br>
                   <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
                 </div>
                 <div>
-                  <label>Re-enter password: </label><br></br>
+                  <label>Re-enter password</label><br></br>
                   <input type="password" onChange={e => this.onPasswordConfirm(e)}></input>
                 </div><br></br>
                 <button type="submit" onClick={e => this.onRegister(e)} className="btn btn-default">Register</button>
