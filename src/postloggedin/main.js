@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMapboxGl, { Feature,Layer, Popup } from "react-mapbox-gl";
 import Request from './request.js';
+import axios from 'axios'
 
 const Map = ReactMapboxGl({
   accessToken: "pk.eyJ1IjoiamxlZWVpIiwiYSI6ImNqa2JmdnBydzBqcXkzb3A4MXR3aGZ5M3IifQ.1BYG_EtmKkW8YTeBYwcL9A"
@@ -18,7 +19,8 @@ export default class Mainpage extends React.Component {
       showPopup: false,
       stations: {},
       station: {},
-      currentPage: "MainPage"
+      currentPage: "MainPage",
+      userprofileinfo: []
     }
     this.redirect = this.redirect.bind(this);
     // this.onRequest = this.onRequest.bind(this);
@@ -51,6 +53,10 @@ export default class Mainpage extends React.Component {
     })
   }
 
+  // componentWillMount(){
+  //   console.log("willmount")
+  // }
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (success) => {
@@ -62,8 +68,8 @@ export default class Mainpage extends React.Component {
     },
     (error) => {
       console.log(error)
-    }
-  )
+    })
+
   fetch('/usershop', {
     method: 'GET',
     credentials: 'same-origin',
@@ -72,17 +78,41 @@ export default class Mainpage extends React.Component {
     }
   })
   .then(res=> res.json())
+
+  // .then(data=> JSON.stringify(data))
+  // .then(data=>JSON.parse(data))
   .then(res=> {
-    var obj = {}
-    res.map(item=> {
-      obj[item["_id"]]={stations: item.locations.stations, position: item.locations.position, yourshopname: item.locations.yourshopname, items: item.items }}
-    )
-    this.setState({stations: obj})
-  })
+        // this.setState({userprofileinfo: res})
+        var obj = {};
+        res.map(item=> {
+          obj[item["_id"]]={stations: item.locations.stations, position: item.locations.position, yourshopname: item.locations.yourshopname, items: item.items }}
+        )
+        this.setState({stations: obj})
+      })
   .catch(err=> console.log(err))
+  // console.log("didmount")
 }
 
+// componentWillUpdate(){
+//   console.log("didupdate")
+//     {
+//     var obj = {}
+//     this.state.userprofileinfo.map(item=> {
+//       obj[item["_id"]]={stations: item.locations.stations, position: item.locations.position, yourshopname: item.locations.yourshopname, items: item.items }}
+//     )
+//     this.setState({stations: obj})
+//   }
+// }
+  //   {
+  //   var obj = {}
+  //   res.map(item=> {
+  //     obj[item["_id"]]={stations: item.locations.stations, position: item.locations.position, yourshopname: item.locations.yourshopname, items: item.items }}
+  //   )
+  //   this.setState({stations: obj})
+  // })
+
 render() {
+  // {console.log("render")}
   return(
     <div>
       {this.state.currentPage === 'Request' ? <Request redirect={this.redirect} setLogin={this.setLogin} app={this}/> : null}
