@@ -82,12 +82,12 @@ export default class Mainpage extends React.Component {
   // .then(data=> JSON.stringify(data))
   // .then(data=>JSON.parse(data))
   .then(res=> {
-        // this.setState({userprofileinfo: res})
-        var obj = {};
-        res.map(item=> {
-          obj[item["_id"]]={stations: item.locations.stations, position: item.locations.position, yourshopname: item.locations.yourshopname, items: item.items }}
-        )
-        this.setState({stations: obj})
+    var obj = {}
+    res.map(item=> {
+      obj[item["_id"]]={stations: item.locations.stations, position: item.locations.position, yourshopname: item.locations.yourshopname, items: item.items }}
+    )
+    this.setState({stations: obj})
+
       })
   .catch(err=> console.log(err))
   // console.log("didmount")
