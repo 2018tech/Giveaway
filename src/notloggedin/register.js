@@ -108,36 +108,34 @@ export default class Register extends React.Component {
         </div>
         <div className="lightgreen">
           <div className="container" id="lightgreen">
-            <h2 >Register</h2>
-            <div>
-              <form>
-                <div className="col-25">
-                  <label>First name</label><br></br>
-                  <input type="firstname" onChange={e => this.onFnameChange(e)}></input>
+            <h2 className="spielbox">Register</h2>
+              <form action="">
+                <div className="field">
+                  <input type="text"  onChange={e => this.onFnameChange(e)}></input>
+                  <label >First name</label><br></br>
                 </div>
-                <div className="col-25">
-                  <label>Last name</label><br></br>
-                  <input type="lastname" onChange={e => this.onLnameChange(e)}></input>
+                <div className="field">
+                  <input type="text"  onChange={e => this.onLnameChange(e)}></input>
+                  <label>Last name</label>
                 </div>
-                <div className="col-25">
-                  <label>Username</label><br></br>
-                  <input type="email" onChange={e => this.onUsernameChange(e)}></input>
+                <div className="field">
+                  <input type="username" onChange={e => this.onUsernameChange(e)}></input>
+                  <label>Username</label>
                 </div>
-                <div className="col-75">
-                  <label>Password</label><br></br>
+                <div className="field">
                   <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
+                  <label>Password</label>
                 </div>
-                <div>
-                  <label>Re-enter password</label><br></br>
+                <div className="field">
                   <input type="password" onChange={e => this.onPasswordConfirm(e)}></input>
-                </div><br></br>
+                  <label>Re-enter password</label>
+                </div>
                 <button type="submit" onClick={e => this.onRegister(e)} className="btn btn-default">Register</button>
               </form>
             </div>
           </div>
           <div className="registerbelow"></div>
         </div>
-      </div>
     );
   }
 }

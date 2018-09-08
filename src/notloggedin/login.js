@@ -73,15 +73,18 @@ export default class Login extends React.Component {
         </Navbar>
         <div className="lightgreen">
           <div className="container" id="lightgreen">
-            <h2>Login</h2>
-            <form>
-              <div className="col-25">
-                <label>Username</label><br></br>
+            <h2  class="spielbox">Login</h2>
+            <form action="">
+              <div className="field">
                 <input type="email" onChange={e => this.onUsernameChange(e)}  ></input>
+                <label>Username</label><br></br>
+
               </div>
-              <div className="col-25">
-                <label>Password</label><br></br>
+              <div className="field">
+
                 <input type="password" onChange={e => this.onPasswordChange(e)} ></input>
+                <label>Password</label><br></br>
+
               </div><br></br>
               <button type="submit" onClick={e => this.onLogin(e)} className="btn btn-default">Login</button>
               {/* <Button variant="contained" color="secondary" onClick={e => this.onLogin(e)}>Login </Button> */}

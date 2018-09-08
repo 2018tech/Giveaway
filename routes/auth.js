@@ -81,8 +81,7 @@ module.exports = function(passport) {
     router.post('/onAccept', (req, res)=> {
       models.User.findById({_id: req.query.id}).then(async user=>{
         var newAccept = new Accept({
-          // user: req.query.realid,
-          accepts: `Your request was accepted! Pick up ${req.body.item} from ${req.body.location}.`
+          accepts: `Your request was accepted! Pick up ${req.body.item} from ${req.body.location} at ${req.body.infoItem.hour}:${req.body.infoItem.minutes}${req.body.infoItem.amorpm} on ${req.body.infoItem.month}/${req.body.infoItem.date}.`
         })
         var acceptToPush = await newAccept.save();
         user.accepts.push(acceptToPush);

@@ -30,6 +30,7 @@ export default class MessagePage extends React.Component {
 
   onAccept(item, e){
     e.preventDefault();
+    console.log(this.state.user.locations)
     fetch('/onAccept?id=' + item.user,{
       method: 'POST',
       headers: {
@@ -38,8 +39,9 @@ export default class MessagePage extends React.Component {
       credentials: 'same-origin',
       body: JSON.stringify({
         item: item.item,
+        infoItem: item,
         location: this.state.user.locations.yourshopname
-      })
+            })
     }).then(axios.delete('/messagedelete?id=' + item._id))
     .then(axios.get('/currentUserMessage').then(res=>
         this.setState({ message: res.data})))
