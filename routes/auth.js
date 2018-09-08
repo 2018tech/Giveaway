@@ -8,7 +8,7 @@ var Message = models.Message;
 var Accept = models.Accept;
 
 var options = {
-  provider: 'google'
+  provider: 'yandex'
 };
 var geocoder = NodeGeocoder(options);
 
