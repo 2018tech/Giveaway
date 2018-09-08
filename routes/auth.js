@@ -7,8 +7,10 @@ var NodeGeocoder = require('node-geocoder');
 var Message = models.Message;
 var Accept = models.Accept;
 
+
+//or yandex
 var options = {
-  provider: 'yandex'
+  provider: 'google'
 };
 var geocoder = NodeGeocoder(options);
 
