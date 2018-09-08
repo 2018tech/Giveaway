@@ -7,7 +7,7 @@ Milestones
 --
 -Started on July 25th, 2018
 
--Firstever Demo Done on September 8th, 2018 https://vimeo.com/288897544
+-First-ever demo done on September 8th, 2018 https://vimeo.com/288897544
 
 
 Future?
