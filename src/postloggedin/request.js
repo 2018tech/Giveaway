@@ -10,7 +10,7 @@ export default class Request extends React.Component {
       item: '',
       month: '',
       date: 0,
-      message: false
+      notify: false
       // itemclick: props.options.eachitem
         };
   };
@@ -72,24 +72,13 @@ export default class Request extends React.Component {
         date: this.state.date
       })
     })
-    .then(res => {
-      switch(res.status) {
-        case 200:
-        this.setState({message: true})
-        break;
-        default:
-      }
-    })
+    .then(this.setState({notify:true}))
     .catch(err => console.log('Error ', err));
   }
 
   render() {
-    // {console.log(this.state.itemclick)}
     return (
-      <div className="timecontainer">
-        <div className="row">
-          <h2>You are almost there!</h2>
-          <div className="timecontainer">
+      <div className="postanitempage">
             <form>
               <br></br>
               <h4>Which Item?</h4>
@@ -244,10 +233,10 @@ export default class Request extends React.Component {
               <br></br>
               <button type="submit" onClick={e => this.ontimeSubmit(e)} className="btn btn-default">Submit</button>
               <button type="gobacktomaps" onClick={e => this.ongobacktoMaps(e)} className="btn btn-default">Go Back To Maps</button>
-              <div className="titles">{this.state.message ? <p className="message">Your request has been sent!</p>: null}</div>
-            </form>
-          </div>
-        </div>
+              </form>
+              {this.state.notify ? <p className="message">Your request has been sent.</p>: null}
+              <div className="itembelow"></div>
+
       </div>
     );
   }
